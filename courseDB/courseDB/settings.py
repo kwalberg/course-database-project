@@ -25,7 +25,8 @@ SECRET_KEY = '+_q7uauu29=o*m(#9_pp_7cw8q2279x4+t5^-1sg_ttf#)b2s8'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['127.0.0.1',
+                 'aa1ecmsmoo5fq5s.ci4kcng77lcj.us-east-2.rds.amazonaws.com']
 
 
 # Application definition
@@ -37,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'courseDB.apps.courseSite'
+    'courseSite'
 ]
 
 MIDDLEWARE = [
@@ -77,9 +78,11 @@ WSGI_APPLICATION = 'courseDB.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'OPTIONS': {
-            'read_default_file': 'C:/Users/kaiwa/PycharmProjects/course-database-project/courseDB/courseDB/mysql.cnf',
-        },
+        'HOST': 'aa1ecmsmoo5fq5s.ci4kcng77lcj.us-east-2.rds.amazonaws.com',
+        'PORT': '3306',
+        'USER': 'root',
+        'PASSWORD': 'password',
+        'NAME': 'test_db'
     }
 }
 
