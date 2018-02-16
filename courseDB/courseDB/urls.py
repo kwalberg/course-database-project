@@ -20,10 +20,10 @@ from django.views.generic import RedirectView
 from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path
-import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('course-db/', include('courseSite.urls')),
 ]
 
 

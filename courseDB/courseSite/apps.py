@@ -1,5 +1,5 @@
 from django.apps import AppConfig
 
 
-class CoursesiteConfig(AppConfig):
+class CourseSiteConfig(AppConfig):
     name = 'courseSite'

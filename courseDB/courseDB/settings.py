@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'courseSite'
+    'courseSite.apps.CourseSiteConfig'
 ]
 
 MIDDLEWARE = [
@@ -111,7 +111,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'CT'
+TIME_ZONE = 'America/Chicago'
 
 USE_I18N = True
 
