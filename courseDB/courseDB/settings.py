@@ -26,7 +26,7 @@ SECRET_KEY = '+_q7uauu29=o*m(#9_pp_7cw8q2279x4+t5^-1sg_ttf#)b2s8'
 DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1',
-                 'aa1ecmsmoo5fq5s.ci4kcng77lcj.us-east-2.rds.amazonaws.com']
+                 'aa10jiukchq7w6v.ci4kcng77lcj.us-east-2.rds.amazonaws.com']
 
 
 # Application definition
@@ -78,11 +78,11 @@ WSGI_APPLICATION = 'courseDB.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'HOST': 'aa1ecmsmoo5fq5s.ci4kcng77lcj.us-east-2.rds.amazonaws.com',
+        'HOST': 'aa10jiukchq7w6v.ci4kcng77lcj.us-east-2.rds.amazonaws.com',
         'PORT': '3306',
         'USER': 'root',
         'PASSWORD': 'password',
-        'NAME': 'test_db'
+        'NAME': 'course_db'
     }
 }
 
