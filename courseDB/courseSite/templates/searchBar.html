@@ -147,8 +147,9 @@
 </style>
 
 <section class="webdesigntuts-workshop">
-	<form action="" method="">
-		<input type="search" placeholder="What are you looking for?">
+	<form action="/results/" method="post">
+		<input type="search" name = "query" placeholder="What are you looking for?">
+		{% csrf_token %}
 		<button>Search</button>
 	</form>
 </section>
