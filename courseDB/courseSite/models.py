@@ -12,9 +12,9 @@ class Course(models.Model):
     duration = models.CharField(max_length=7, choices=DURATION_CHOICES)
 
     # Don't require file upload
-    image = models.ImageField('course_art/', null=True, blank=True)
+    #image = models.ImageField('course_art/', null=True, blank=True)
 
-
+'''
 class CourseForm(forms.ModelForm):
     class Meta:
         model = Course
@@ -30,6 +30,6 @@ class CourseForm(forms.ModelForm):
         }
         help_texts = {
             'description': 'Provide some information about what students will learn.',
-        }
+        }'''
 
 

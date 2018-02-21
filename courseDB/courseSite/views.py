@@ -7,5 +7,6 @@ def index(request):
 def class_page(request, class_name):
     return render(request, 'classPage.html', {'name': class_name})
 
-def search_results(request, query):
+def search_results(request):
+    query = request.POST.get("query", "")
     return render(request, 'searchResults.html', {'query': query})
