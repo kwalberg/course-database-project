@@ -3,11 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Search Results</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
 
-
-  <p>{{query}}</p>
-
+<h4>Your search for {{query}} returned some results.</h4><br>
+{% for class_name in class_list %}
+<div class="panel panel-default">
+    <div class="panel-body"><a href="{% url 'class' class_name %}">{{class_name}}</a></div>
+</div>
+{% endfor %}
 </body>
 </html>

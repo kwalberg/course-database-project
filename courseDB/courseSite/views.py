@@ -9,4 +9,5 @@ def class_page(request, class_name):
 
 def search_results(request):
     query = request.POST.get("query", "")
-    return render(request, 'searchResults.html', {'query': query})
+    class_list = ['101','240','265']
+    return render(request, 'searchResults.html', {'query': query, 'class_list': class_list})
