@@ -3,7 +3,7 @@ from .models import Course
 
 
 # Create your views here.
-def index(request):
+def search(request):
     return render(request,'searchBar.html',context={})
 
 def class_page(request, class_name):
@@ -22,4 +22,5 @@ def retrieveObjects(request):
     return entries
 
 
-
+def login(request):
+    return render(request, 'LoginTest.html')
