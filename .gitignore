@@ -1,3 +1,10 @@
 .idea/
 .DS_Store
-*.pyc
+*.py[cod]
+__pycache__/
+*.sublime-project
+*.sublime-workspace
+
+# Django stuff:
+*.log
+*.pot
