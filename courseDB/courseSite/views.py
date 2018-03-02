@@ -1,10 +1,14 @@
 from django.shortcuts import render
 from .models import Course
-
+from django.db.models import Q
+from django.contrib.auth.models import User
+from .filters import UserFilter
 
 # Create your views here.
 def search(request):
-    return render(request,'searchBar.html',context={})
+    user_list = User.objects.all()
+    user_filter = UserFilter(request.GET, queryset=user_list)
+    return render(request,'searchBar.html', {'filter': user_filter})
 
 def class_page(request, class_name):
     course = Course.objects.filter(title=class_name)[0]
@@ -17,8 +21,11 @@ def search_results(request):
 
 def retrieveObjects(request):
     query = request.POST.get("query", "")
-    softwareDev = Course(title="Software Dev")
-    entries = Course.objects.filter(title= query)
+    entries = Course.objects.filter(
+        Q(title= query) |
+        Q(instructor= query)
+    ).distinct()
+
     return entries
 
 
