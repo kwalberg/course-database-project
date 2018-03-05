@@ -9,7 +9,7 @@ def search(request):
 
     course_list = Course.objects.all()
     user_filter = UserFilter(request.GET, queryset=course_list)
-    return render(request,'searchBar.html', {'filter': user_filter, 'class_list': course_list})
+    return render(request,'searchBar.html', {'filter': user_filter, 'class_list': Course.objects.all()})
 
 def class_page(request, class_name):
     course = Course.objects.filter(title=class_name)[0]
