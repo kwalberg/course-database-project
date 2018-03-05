@@ -6,9 +6,10 @@ from .filters import UserFilter
 
 # Create your views here.
 def search(request):
-    user_list = User.objects.all()
-    user_filter = UserFilter(request.GET, queryset=user_list)
-    return render(request,'searchBar.html', {'filter': user_filter})
+
+    course_list = Course.objects.all()
+    user_filter = UserFilter(request.GET, queryset=course_list)
+    return render(request,'searchBar.html', {'filter': user_filter, 'class_list': Course.user_list})
 
 def class_page(request, class_name):
     course = Course.objects.filter(title=class_name)[0]
@@ -22,8 +23,8 @@ def search_results(request):
 def retrieveObjects(request):
     query = request.POST.get("query", "")
     entries = Course.objects.filter(
-        Q(title= query) |
-        Q(instructor= query)
+        Q(title__icontains= query) |
+        Q(instructor__icontains= query)
     ).distinct()
 
     return entries
