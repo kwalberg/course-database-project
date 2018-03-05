@@ -3,7 +3,7 @@ from .models import Course
 from django.db.models import Q
 from django.contrib.auth.models import User
 from .filters import UserFilter
-
+#he
 # Create your views here.
 def search(request):
 
