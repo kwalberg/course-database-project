@@ -24,7 +24,8 @@ def retrieveObjects(request):
     query = request.POST.get("query", "")
     entries = Course.objects.filter(
         Q(title__icontains= query) |
-        Q(instructor__icontains= query)
+        Q(instructor__icontains= query) |
+        Q(description__icontains=query)
     ).distinct()
 
     return entries
