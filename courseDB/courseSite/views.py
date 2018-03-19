@@ -30,6 +30,8 @@ def retrieveObjects(request):
 
     return entries
 
+def rate_course(request, class_name):
+    return render(request, 'ratingInterface.html', {'name':class_name})
 
 def login(request):
     return render(request, 'LoginTest.html')
