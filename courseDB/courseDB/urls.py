@@ -24,6 +24,8 @@ from django.urls import path
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('courseSite.urls')),
+    path(r'^ratings/', include('star_ratings.urls', namespace='ratings')),
 ]
+
 
 
