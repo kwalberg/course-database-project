@@ -27,6 +27,11 @@ def retrieveObjects(request):
 
     return entries
 
+def submit_review(request,class_name):
+    review = request.POST.get("comment", "")
+    course = Course.objects.filter(title=class_name)
+    return render(request, 'classPage.html', {'course': course})
+
 def rate_course(request, class_name):
     return render(request, 'ratingInterface.html', {'name':class_name})
 

@@ -10,5 +10,6 @@ urlpatterns = [
     path('results/', views.search_results, name='results'),
     path('class/<str:class_name>/', views.class_page, name='class'),
     path('login/', views.login, name='login'),
-    path('rate/<str:class_name>/', views.rate_course, name='rate')
+    path('rate/<str:class_name>/', views.rate_course, name='rate'),
+    path('submit_review/<str:class_name>/', views.submit_review, name='submit_review')
 ]
