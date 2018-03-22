@@ -2,14 +2,11 @@ from django.shortcuts import render
 from .models import Course
 from django.db.models import Q
 from django.contrib.auth.models import User
-from .filters import UserFilter
-#he
+
 # Create your views here.
 def search(request):
-
     course_list = Course.objects.all()
-    user_filter = UserFilter(request.GET, queryset=course_list)
-    return render(request,'searchBar.html', {'filter': user_filter, 'class_list': Course.objects.all()})
+    return render(request,'index.html', {'class_list': Course.objects.all()})
 
 def class_page(request, class_name):
     course = Course.objects.filter(title=class_name)[0]
