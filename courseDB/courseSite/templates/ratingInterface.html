@@ -1,0 +1,49 @@
+{% extends "public/base.html" %}
+
+{% block content %}
+<h2>Submit a Rating for {{name}}</h2>
+
+<div class="btn-group btn-group-toggle" data-toggle="buttons">
+  <label class="btn btn-secondary active">
+    <input type="radio" name="options" id="option1" autocomplete="off" checked> 0-1
+  </label>
+  <label class="btn btn-secondary">
+    <input type="radio" name="options" id="option2" autocomplete="off"> 2-4
+  </label>
+    <label class="btn btn-secondary">
+    <input type="radio" name="options" id="option3" autocomplete="off"> 5-7
+  </label>
+    <label class="btn btn-secondary">
+    <input type="radio" name="options" id="option4" autocomplete="off"> 7-9
+  </label>
+    <label class="btn btn-secondary">
+    <input type="radio" name="options" id="option5" autocomplete="off"> Radio
+  </label>
+</div>
+
+<div class="btn-group" data-toggle="buttons" role="group" aria-label="First group">
+    <p>Hours spent per week:&nbsp;</p>
+    <input type="radio" class="btn btn-default">0-1</input>
+    <button type="button" class="btn btn-default">2-4</button>
+    <button type="button" class="btn btn-default">5-7</button>
+    <button type="button" class="btn btn-default">7-10</button>
+    <button type="button" class="btn btn-default">10+</button>
+</div><br><br>
+
+<div class="btn-group" role="group" aria-label="First group">
+    <p>Cost of textbooks:&nbsp;</p>
+    <button type="button" class="btn btn-default">No Textbook</button>
+    <button type="button" class="btn btn-default">$1-50</button>
+    <button type="button" class="btn btn-default">$50-100</button>
+    <button type="button" class="btn btn-default">$100-200</button>
+    <button type="button" class="btn btn-default">$200+</button>
+</div><br><br>
+
+<div class="btn-group" role="group" aria-label="First group">
+    <p>Would you recommend this course to a friend?&nbsp;</p>
+    <button type="button" class="btn btn-default">Yes</button>
+    <button type="button" class="btn btn-default">Nope</button>
+</div><br><br>
+
+
+{% endblock %}

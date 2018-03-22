@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'courseSite.apps.CourseSiteConfig',
-    'django_filters'
+    'django_filters',
+    'star_ratings'
 ]
 
 MIDDLEWARE = [
