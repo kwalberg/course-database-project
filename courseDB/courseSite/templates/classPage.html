@@ -4,6 +4,9 @@
 
 <!-- for ratings -->
 
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css" integrity="sha384-v2Tw72dyUXeU3y4aM2Y0tBJQkGfplr39mxZqlTBDUZAb9BGoC40+rdFCG0m10lXk" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/fontawesome.css" integrity="sha384-q3jl8XQu1OpdLgGFvNRnPdj5VIlCvgsDQTQB6owSOHWlAurxul7f+JpUOVdAiJ5P" crossorigin="anonymous">
+
 <div class="container">
   <div class="row">
     <div class="col-sm-6 col-sm-offset-3">
@@ -107,31 +110,33 @@
             </div>
         </div>
     </div>
+
     <div class="row">
 			<div class="col-sm-7">
 				<hr/>
 				<div class="review-block">
-					<div class="row">
+
+                    {% for review in review_list %}
+                        <div class="row">
 						<div class="col-sm-3">
-							<img src="http://dummyimage.com/60x60/666/ffffff&text=No+Image" class="img-rounded">
 							<div class="review-block-name"><a href="#">nktailor</a></div>
 							<div class="review-block-date">January 29, 2016<br/>1 day ago</div>
 						</div>
 						<div class="col-sm-9">
 							<div class="review-block-rate">
-								<button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
+								<button type="button" class="fas fa-star" aria-label="Left Align">
 								  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
 								</button>
-								<button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
+								<button type="button" class="fas fa-star" aria-label="Left Align">
 								  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
 								</button>
-								<button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
+								<button type="button" class="fas fa-star" aria-label="Left Align">
 								  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
 								</button>
-								<button type="button" class="btn btn-default btn-grey btn-xs" aria-label="Left Align">
+								<button type="button" class="fas fa-star" aria-label="Left Align">
 								  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
 								</button>
-								<button type="button" class="btn btn-default btn-grey btn-xs" aria-label="Left Align">
+								<button type="button" class="fas fa-star" aria-label="Left Align">
 								  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
 								</button>
 							</div>
@@ -139,64 +144,7 @@
 							<div class="review-block-description">this was nice in buy. this was nice in buy. this was nice in buy. this was nice in buy this was nice in buy this was nice in buy this was nice in buy this was nice in buy</div>
 						</div>
 					</div>
-					<hr/>
-					<div class="row">
-						<div class="col-sm-3">
-							<img src="http://dummyimage.com/60x60/666/ffffff&text=No+Image" class="img-rounded">
-							<div class="review-block-name"><a href="#">nktailor</a></div>
-							<div class="review-block-date">January 29, 2016<br/>1 day ago</div>
-						</div>
-						<div class="col-sm-9">
-							<div class="review-block-rate">
-								<button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
-								  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-								</button>
-								<button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
-								  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-								</button>
-								<button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
-								  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-								</button>
-								<button type="button" class="btn btn-default btn-grey btn-xs" aria-label="Left Align">
-								  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-								</button>
-								<button type="button" class="btn btn-default btn-grey btn-xs" aria-label="Left Align">
-								  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-								</button>
-							</div>
-							<div class="review-block-title">this was nice in buy</div>
-							<div class="review-block-description">Memes</div>
-						</div>
-					</div>
-					<hr/>
-					<div class="row">
-						<div class="col-sm-3">
-							<img src="http://dummyimage.com/60x60/666/ffffff&text=No+Image" class="img-rounded">
-							<div class="review-block-name"><a href="#">nktailor</a></div>
-							<div class="review-block-date">January 29, 2016<br/>1 day ago</div>
-						</div>
-						<div class="col-sm-9">
-							<div class="review-block-rate">
-								<button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
-								  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-								</button>
-								<button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
-								  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-								</button>
-								<button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
-								  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-								</button>
-								<button type="button" class="btn btn-default btn-grey btn-xs" aria-label="Left Align">
-								  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-								</button>
-								<button type="button" class="btn btn-default btn-grey btn-xs" aria-label="Left Align">
-								  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-								</button>
-							</div>
-							<div class="review-block-title">this was nice in buy</div>
-							<div class="review-block-description">this was nice in buy. this was nice in buy. this was nice in buy. this was nice in buy this was nice in buy this was nice in buy this was nice in buy this was nice in buy</div>
-						</div>
-					</div>
+                           {% endfor %}
                 </div>
             </div>
     </div>
