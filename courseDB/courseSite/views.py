@@ -9,8 +9,9 @@ def search(request):
     return render(request,'index.html', {'class_list': Course.objects.all()})
 
 def class_page(request, class_name):
+    review_list = ["review 1", "review 2"]
     course = Course.objects.filter(title=class_name)[0]
-    return render(request, 'classPage.html', {'course': course})
+    return render(request, 'classPage.html', {'course': course, 'review_list': review_list})
 
 def search_results(request):
     query = request.POST.get("query", "")
@@ -37,3 +38,4 @@ def rate_course(request, class_name):
 
 def login(request):
     return render(request, 'LoginTest.html')
+
