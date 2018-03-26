@@ -17,4 +17,3 @@ class Course(models.Model):
     # Don't require file upload
     #image = models.ImageField('course_art/', null=True, blank=True)
 
-
