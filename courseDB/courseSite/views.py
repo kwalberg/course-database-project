@@ -13,6 +13,7 @@ def class_page(request, class_name):
     course = Course.objects.filter(title=class_name)[0]
     return render(request, 'classPage.html', {'course': course, 'review_list': review_list})
 
+#the ratings appear on the front end
 def search_results(request):
     query = request.POST.get("query", "")
     class_list = retrieveObjects(request)
