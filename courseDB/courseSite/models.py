@@ -11,6 +11,8 @@ class Course(models.Model):
     DURATION_CHOICES = [('1', '2 Weeks'), ('2', '8 Weeks')]
     duration = models.CharField(max_length=7, choices=DURATION_CHOICES)
 
+    def __str__(self):
+        return self.title
 
 class Review(models.Model):
     name = models.CharField(max_length=1024)
@@ -22,8 +24,7 @@ class Review(models.Model):
     recommend = models.IntegerField(null=True)
 
 
-    def __str__(self):
-        return self.title
+
 
     # Don't require file upload
     #image = models.ImageField('course_art/', null=True, blank=True)
