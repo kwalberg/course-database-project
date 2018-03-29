@@ -1,8 +1,14 @@
 {% extends "public/base.html" %}
-
+{% load pinax_ratings_tags %}
+{% load ratings %}
 {% block content %}
+<link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
+<script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"></script>
 
 
+
+
+{% ratings objects %}
 <div class="container">
     <h2>Submit a Rating for {{name}}</h2><br><br>
     <form action="/submit_review/{{name}}/" method="post">

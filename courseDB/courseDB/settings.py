@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'courseSite.apps.CourseSiteConfig',
     'django_filters',
-    'star_ratings'
+    'star_ratings',
 ]
 
 MIDDLEWARE = [
