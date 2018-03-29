@@ -2,19 +2,21 @@
 
 {% block content %}
 
-</form>
-	<div class="inputGroup inputGroup1">
-		<label for="email1">Email</label>
-		<input type="text" id="email" class="email" maxlength="256"/>
-		<span class="indicator"></span>
-	</div>
-	<div class="inputGroup inputGroup2">
-		<label for="password">Password</label>
-		<input type="password" id="password" class="password" />
-	</div>
-	<div class="inputGroup inputGroup3">
-		<button id="login">Log in</button>
-	</div>
-</form>
+<body>
+    <form method="POST">
+        {% csrf_token %}
+        <p>
+            <label>Username</label>
+            <input type="text" name="username">
+        </p>
+        <p>
+            <label>Password</label>
+            <input type="password" name="password">
+        </p>
+        <button type="submit">Login</button>
+    </form>
+
+    <p>Don't have an account? <a href="{% url 'signup' %}">Click here to sign up!</a></p>
+</body>
 
 {% endblock %}
