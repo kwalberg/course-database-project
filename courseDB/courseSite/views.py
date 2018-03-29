@@ -7,9 +7,12 @@ from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
 
 # Create your views here.
-def search(request):
+def getCatalog(request):
     course_list = Course.objects.all()
-    return render(request,'index.html', {'class_list': Course.objects.all()})
+    return render(request,'Catalog.html', {'class_list': Course.objects.all()})
+
+def FrontPage(request):
+    return render(request, 'FrontPage.html')
 
 def class_page(request, class_name):
     review_list = ["review 1", "review 2"]
