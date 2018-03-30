@@ -43,9 +43,6 @@ def submit_review(request,class_name):
 def rate_course(request, class_name):
     return render(request, 'ratingInterface.html', {'name':class_name})
 
-def login(request):
-    return render(request, 'Login.html')
-
 def signup(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
