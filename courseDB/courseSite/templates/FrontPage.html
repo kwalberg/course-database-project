@@ -5,7 +5,8 @@
 <head>
 <style>
     body {
-    padding-top: 300px;
+    padding-top: 333px;
+    padding-left: 600px;
 }
 .dropdown.dropdown-lg .dropdown-menu {
     margin-top: -1px;
@@ -52,40 +53,46 @@
 <body>
 
 <div class="h-100 row align-items-center">
-            <div class="input-group" id="adv-search">
-                <input type="text" class="form-control" placeholder="Search for snippets" />
-                <div class="input-group-btn">
-                    <div class="btn-group" role="group">
+<div class="input-group stylish-input-group">
+                 <form class="form-inline" action="/results/" method="post">
+                      <div class="form-group">
+                        <input type="search" class="form-control" name = "query" placeholder="Find a class">
+                        {% csrf_token %}
+                      </div>
+                      <button type="submit" class="btn btn-primary">Search</button>
+                  </form>
+                    <div class="btn-group"  role="group">
                         <div class="dropdown dropdown-lg">
-                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></button>
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span>Advanced</button>
                             <div class="dropdown-menu dropdown-menu-right" role="menu">
-                                <form class="form-horizontal" role="form">
+                                <form class="form-horizontal" action="/results" method="post" role="form">
                                   <div class="form-group">
                                     <label for="filter">Filter by</label>
                                     <select class="form-control">
-                                        <option value="0" selected>All Snippets</option>
-                                        <option value="1">Featured</option>
-                                        <option value="2">Most popular</option>
+                                        <option value="0" selected>Instructor</option>
+                                        <option value="1">Department</option>
+                                        <option value="2">Class Title</option>
                                         <option value="3">Top rated</option>
                                         <option value="4">Most commented</option>
                                     </select>
                                   </div>
                                   <div class="form-group">
-                                    <label for="contain">Author</label>
+                                    <label for="contain">Ratings</label>
                                     <input class="form-control" type="text" />
                                   </div>
                                   <div class="form-group">
                                     <label for="contain">Contains the words</label>
                                     <input class="form-control" type="text" />
                                   </div>
-                                  <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                                  <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>Search</button>
                                 </form>
                             </div>
                         </div>
-                        <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
                     </div>
-                </div>
-            </div>
+              </div>
+
+
+
 </div>
 
 
