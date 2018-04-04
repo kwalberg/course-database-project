@@ -53,19 +53,19 @@
 <body>
 
 <div class="h-100 row align-items-center">
-<div class="input-group stylish-input-group">
-                 <form class="form-inline" action="/results/" method="post">
+<form class="input-group stylish-input-group" action="/advancedresults/" method="post">
+                 <div class="form-inline">
                       <div class="form-group">
                         <input type="search" class="form-control" name = "query" placeholder="Find a class">
                         {% csrf_token %}
                       </div>
                       <button type="submit" class="btn btn-primary">Search</button>
-                  </form>
+                  </div>
                     <div class="btn-group"  role="group">
                         <div class="dropdown dropdown-lg">
                             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span>Advanced</button>
                             <div class="dropdown-menu dropdown-menu-right" role="menu">
-                                <form class="form-horizontal" action="/results" method="post" role="form">
+                                <div class="form-horizontal">
                                   <div class="form-group">
                                     <label for="filter">Filter by</label>
                                     <select class="form-control">
@@ -85,11 +85,12 @@
                                     <input class="form-control" type="text" />
                                   </div>
                                   <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>Search</button>
-                                </form>
+                                </div>
                             </div>
                         </div>
                     </div>
-              </div>
+              </form>
+        </form>
 </div>
 
 
@@ -97,6 +98,11 @@
 
 
 </body>
+<script>
+    $('.dropdown-menu').click(function(e) {
+        e.stopPropagation();
+    });
+</script>
 </html>
 
 
