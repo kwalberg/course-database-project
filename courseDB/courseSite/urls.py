@@ -10,6 +10,7 @@ urlpatterns = [
     path('Catalog/', views.getCatalog, name='search'),
     path('', views.FrontPage, name='frontpage'),
     path('results/', views.search_results, name='results'),
+    path('advancedresults/', views.advanced_results, name='advancedresults'),
     path('class/<str:class_name>/', views.class_page, name='class'),
     url(r'^login/$', auth_views.login, {"template_name": "Login.html"}),
     path('rate/<str:class_name>/', views.rate_course, name='rate'),

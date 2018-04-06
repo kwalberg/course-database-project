@@ -34,6 +34,36 @@ def retrieveObjects(request):
 
     return entries
 
+def retrieveInstructor(request):
+    query = request.POST.get("query", "")
+    entries = Course.objects.filter(
+        Q(instructor__icontains= query)
+    ).distinct()
+
+    return entries
+
+def retrieveDepartment(request):
+    query = request.POST.get("query", "")
+    entries = Course.objects.filter(
+        Q(description__icontains= query)
+    ).distinct()
+
+    return entries
+
+def advanced_results(request):
+    query = request.POST.get("query", "")
+    value = request.POST.get("category", "")
+    class_list = retrieveObjects(request)
+    if value == "0":
+        class_list = retrieveObjects(request)
+    if value == "1":
+        class_list = retrieveInstructor(request)
+    if value == "2":
+        class_list = retrieveDepartment(request)
+    return render(request, 'searchResults.html', {'query': query, 'class_list': class_list})
+
+
+
 def submit_review(request,class_name):
     review = request.POST.get("comment", "")
     course = Course.objects.filter(title=class_name)
