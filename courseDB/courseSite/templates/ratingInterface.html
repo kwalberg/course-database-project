@@ -1,5 +1,5 @@
 {% extends "public/base.html" %}
-{% load ratings %}
+
 {% block content %}
 
 
@@ -11,19 +11,19 @@
         <div class="col">
             <div class="btn-group btn-group-toggle" data-toggle="buttons">
                 <label class="btn btn-secondary active">
-                    <input type="radio" name="options" autocomplete="off" checked> 0-1
+                    <input type="radio" name="time" value="1" autocomplete="off" checked> 0-1
                 </label>
                 <label class="btn btn-secondary">
-                    <input type="radio" name="options" autocomplete="off"> 2-4
+                    <input type="radio" name="time" value = "2" autocomplete="off"> 2-4
                 </label>
                 <label class="btn btn-secondary">
-                    <input type="radio" name="options" autocomplete="off"> 5-7
+                    <input type="radio" name="time" value = "3" autocomplete="off"> 5-7
                 </label>
                 <label class="btn btn-secondary">
-                    <input type="radio" name="options" autocomplete="off"> 7-9
+                    <input type="radio" name="time" value = "4" autocomplete="off"> 7-9
                 </label>
                 <label class="btn btn-secondary">
-                    <input type="radio" name="options" autocomplete="off"> 10+
+                    <input type="radio" name="time" value = "5" autocomplete="off"> 10+
                 </label>
             </div>
         </div>
@@ -34,19 +34,19 @@
             <div class="btn-group btn-group-toggle" data-toggle="buttons">
 
                 <label class="btn btn-secondary active">
-                    <input type="radio" name="options" autocomplete="off" checked> No Textbook
+                    <input type="radio" name="cost" value = "1" autocomplete="off" checked> No Textbook
                 </label>
                 <label class="btn btn-secondary">
-                    <input type="radio" name="options" autocomplete="off"> $1-50
+                    <input type="radio" name="cost" value = "2"autocomplete="off"> $1-50
                 </label>
                 <label class="btn btn-secondary">
-                    <input type="radio" name="options" autocomplete="off"> $50-100
+                    <input type="radio" name="cost" value = "3" autocomplete="off"> $50-100
                 </label>
                 <label class="btn btn-secondary">
-                    <input type="radio" name="options" autocomplete="off"> $100-200
+                    <input type="radio" name="cost" value = "4" autocomplete="off"> $100-200
                 </label>
                 <label class="btn btn-secondary">
-                    <input type="radio" name="options" autocomplete="off"> $200+
+                    <input type="radio" name="cost" value = "5" autocomplete="off"> $200+
                 </label>
             </div>
         </div>
@@ -58,10 +58,10 @@
             <div class="btn-group btn-group-toggle" data-toggle="buttons">
 
                 <label class="btn btn-secondary active">
-                    <input type="radio" name="options" autocomplete="off" checked> Yes
+                    <input type="radio" name="recommend" value = "0" autocomplete="off" checked> Yes
                 </label>
                 <label class="btn btn-secondary">
-                    <input type="radio" name="options" autocomplete="off"> Nope
+                    <input type="radio" name="recommend" value = "1" autocomplete="off"> Nope
                 </label>
             </div>
         </div>

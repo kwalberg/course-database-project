@@ -1,11 +1,10 @@
 {% extends "public/base.html" %}
-{% load ratings %}
+
 {% block content %}
 
 <!-- for ratings -->
 <html>
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css" integrity="sha384-v2Tw72dyUXeU3y4aM2Y0tBJQkGfplr39mxZqlTBDUZAb9BGoC40+rdFCG0m10lXk" crossorigin="anonymous">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/fontawesome.css" integrity="sha384-q3jl8XQu1OpdLgGFvNRnPdj5VIlCvgsDQTQB6owSOHWlAurxul7f+JpUOVdAiJ5P" crossorigin="anonymous">
+
 
 <body>
 
@@ -18,9 +17,6 @@
             <h3>{{course.description}}</h3>
             <h4>Level of Difficulty</h4>
             <h5>Recommendation</h5>
-
-
-    {% ratings course %}
 
 
             <a href="/rate/{{course.title}}">Submit a Rating</a>
@@ -41,7 +37,7 @@
                             </span><span class="glyphicon glyphicon-star-empty"></span>
                         </div>
                         <div>
-                            <span class="glyphicon glyphicon-user"></span>1,050,008 total
+                            <span class="glyphicon glyphicon-user"></span>{{review_list|length}} total
                         </div>
                     </div>
                     <div class="col-xs-12 col-md-6">
@@ -120,12 +116,12 @@
 				<div class="review-block">
 
                     {% for review in review_list %}
-                        <div class="row">
-						<div class="col-sm-3">
-							<div class="review-block-name"><a href="#">nktailor</a></div>
-							<div class="review-block-date">January 29, 2016<br/>1 day ago</div>
+                    <div class="row">
+						<div class="col-sm-4">
+							<div class="review-block-name"><a href="#">{{review.author}}</a></div>
+							<div class="review-block-date">{{review.pub_date}}</div>
 						</div>
-						<div class="col-sm-9">
+						<div class="col-sm-8">
 							<div class="review-block-rate">
 								<button type="button" class="fas fa-star" aria-label="Left Align">
 								  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
@@ -143,11 +139,10 @@
 								  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
 								</button>
 							</div>
-							<div class="review-block-title">this was nice in buy</div>
-							<div class="review-block-description">this was nice in buy. this was nice in buy. this was nice in buy. this was nice in buy this was nice in buy this was nice in buy this was nice in buy this was nice in buy</div>
+							<div class="review-block-description">{{review.text}}</div>
 						</div>
-					</div>
-                           {% endfor %}
+                    </div><br><br>
+                    {% endfor %}
                 </div>
             </div>
     </div>

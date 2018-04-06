@@ -1,10 +1,11 @@
 from django.shortcuts import render
-from .models import Course
+from .models import Course, Review
 from django.db.models import Q
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
+import datetime
 
 # Create your views here.
 def getCatalog(request):
@@ -15,14 +16,15 @@ def FrontPage(request):
     return render(request, 'FrontPage.html')
 
 def class_page(request, class_name):
-    review_list = ["review 1", "review 2"]
+    review_list = Review.objects.filter(name=class_name)
     course = Course.objects.filter(title=class_name)[0]
     return render(request, 'classPage.html', {'course': course, 'review_list': review_list})
 
 def search_results(request):
     query = request.POST.get("query", "")
+    category = request.POST.get("category")
     class_list = retrieveObjects(request)
-    return render(request, 'searchResults.html', {'query': query, 'class_list': class_list})
+    return render(request, 'searchResults.html', {'query': category, 'class_list': class_list})
 
 def retrieveObjects(request):
     query = request.POST.get("query", "")
@@ -31,7 +33,6 @@ def retrieveObjects(request):
         Q(instructor__icontains= query) |
         Q(description__icontains=query)
     ).distinct()
-
     return entries
 
 def retrieveInstructor(request):
@@ -65,12 +66,16 @@ def advanced_results(request):
 
 
 def submit_review(request,class_name):
-    review = request.POST.get("comment", "")
-    course = Course.objects.filter(title=class_name)
-    return render(request, 'classPage.html', {'course': course})
+    diff = request.POST.get("time")
+    cost = request.POST.get("cost")
+    recommend = request.POST.get("recommend")
+    comment = request.POST.get("comment")
+    Review.objects.create(name=class_name, text=comment, author=request.user, pub_date=datetime.datetime.now(), cost = cost, difficulty=diff, recommend=recommend)
+    return redirect(class_page, permanent=True, class_name = class_name)
 
 def rate_course(request, class_name):
-    return render(request, 'ratingInterface.html', {'name':class_name})
+    course = Course.objects.filter(title=class_name)[0]
+    return render(request, 'ratingInterface.html', {'name':class_name, 'course': course})
 
 def signup(request):
     if request.method == 'POST':

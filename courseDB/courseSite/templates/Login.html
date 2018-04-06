@@ -1,7 +1,7 @@
 {% extends "public/base.html" %}
 {% load staticfiles %}
 {% block content %}
-<form method = "POST">
+<!--<form method = "POST">
     {% csrf_token %}
     <div class="form-group">
         <label for="inputEmail">Email</label>
@@ -17,26 +17,31 @@
         <label><input type="checkbox"> Remember me</label>
     </div>
     <button type="submit" class="btn btn-primary">Login</button>
-</form>
+</form>-->
 
 
 
 
-<!--<body>-->
-    <!--<form method="POST">-->
-        <!--{% csrf_token %}-->
-        <!--<p>-->
-            <!--<label>Username</label>-->
-            <!--<input type="text" name="username">-->
-        <!--</p>-->
-        <!--<p>-->
-            <!--<label>Password</label>-->
-            <!--<input type="password" name="password">-->
-        <!--</p>-->
-        <!--<button type="submit">Login</button>-->
-    <!--</form>-->
+<body>
+    <form method="POST" >
+        {% csrf_token %}
+        <div class="form-group">
+            <label>Username</label>
+            <input type="text" name="username">
+        </div>
+        <div class="form-group">
+            <label>Password</label>
+            <input type="password" name="password">
+        </div>
+        <!--<div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="rememberMe">
+            <label class="form-check-label" for="rememberMe">Remember me</label>
+        </div>-->
+        <button type="submit">Login</button>
 
-    <!--<p>Don't have an account? <a href="{% url 'signup' %}">Click here to sign up!</a></p>-->
-<!--</body>-->
+    </form>
+
+    <p>Don't have an account? <a href="{% url 'signup' %}">Click here to sign up!</a></p>
+</body>
 
 {% endblock %}
