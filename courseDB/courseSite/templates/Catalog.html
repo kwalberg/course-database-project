@@ -42,9 +42,9 @@ tr:nth-child(even) {
 
   {% for course in class_list %}
     <tr>
-        <th><a href="{% url 'class' course.title %}">{{course.title}}</a></th>
+        <th><a href="{% url 'class' course.course_id %}">{{course.course_id}}</a></th>
         <th>{{course.instructor}}</th>
-        <th>{{course.description}}</th>
+        <th>{{course.full_title}}</th>
 
     </tr>
             {% endfor %}
