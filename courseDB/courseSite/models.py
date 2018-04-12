@@ -14,10 +14,10 @@ class Course(models.Model):
     description = models.TextField()
     instructor = models.CharField(max_length=150)
     days = models.CharField(max_length=5)
-    times = models.CharField(max_length=10)
+    times = models.CharField(max_length=20)
 
     def __str__(self):
-        return self.title
+        return self.course_id
 
 class Review(models.Model):
     name = models.CharField(max_length=1024)

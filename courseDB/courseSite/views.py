@@ -8,8 +8,9 @@ from django.shortcuts import render, redirect
 import datetime
 
 # Create your views here.
+
+#
 def getCatalog(request):
-    course_list = Course.objects.all()
     return render(request,'Catalog.html', {'class_list': Course.objects.all()})
 
 def FrontPage(request):
@@ -17,21 +18,21 @@ def FrontPage(request):
 
 def class_page(request, class_name):
     review_list = Review.objects.filter(name=class_name)
-    course = Course.objects.filter(title=class_name)[0]
+    course = Course.objects.filter(course_id=class_name)[0]
     return render(request, 'classPage.html', {'course': course, 'review_list': review_list})
 
 def search_results(request):
     query = request.POST.get("query", "")
     category = request.POST.get("category")
     class_list = retrieveObjects(request)
-    return render(request, 'searchResults.html', {'query': category, 'class_list': class_list})
+    return render(request, 'searchResults.html', {'query': query, 'class_list': class_list})
 
 def retrieveObjects(request):
     query = request.POST.get("query", "")
     entries = Course.objects.filter(
-        Q(title__icontains= query) |
+        Q(course_id__icontains= query) |
         Q(instructor__icontains= query) |
-        Q(description__icontains=query)
+        Q(full_title__icontains=query)
     ).distinct()
     return entries
 
@@ -46,7 +47,7 @@ def retrieveInstructor(request):
 def retrieveDepartment(request):
     query = request.POST.get("query", "")
     entries = Course.objects.filter(
-        Q(description__icontains= query)
+        Q(full_title__icontains= query)
     ).distinct()
 
     return entries
@@ -74,8 +75,11 @@ def submit_review(request,class_name):
     return redirect(class_page, permanent=True, class_name = class_name)
 
 def rate_course(request, class_name):
-    course = Course.objects.filter(title=class_name)[0]
-    return render(request, 'ratingInterface.html', {'name':class_name, 'course': course})
+    if request.user.is_authenticated:
+        course = Course.objects.filter(title=class_name)[0]
+        return render(request, 'ratingInterface.html', {'name':class_name, 'course': course})
+    else:
+        return redirect("/login/")
 
 def signup(request):
     if request.method == 'POST':
