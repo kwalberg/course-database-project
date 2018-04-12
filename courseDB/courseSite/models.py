@@ -14,13 +14,13 @@ class Course(models.Model):
     description = models.TextField()
     instructor = models.CharField(max_length=150)
     days = models.CharField(max_length=5)
-    times = models.CharField(max_length=20)
+    times = models.CharField(max_length=10)
 
     def __str__(self):
         return self.course_id
 
 class Review(models.Model):
-    name = models.CharField(max_length=1024)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
     text = models.TextField()
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     pub_date = models.DateTimeField(auto_now_add='true')

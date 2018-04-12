@@ -4,49 +4,72 @@
 
 
 <div class="container">
-    <h2>Submit a Rating for {{name}}</h2><br><br>
-    <form action="/submit_review/{{name}}/" method="post">
+    <h2>Submit a Rating for {{course.course_id}}</h2><br><br>
+    <h3>How does this class compare to others in the following categories?</h3>
+    <form action="/submit_review/{{course.course_id}}/" method="post">
     <div class="row">
-        <div class="col-sm-3"><p>Hours spent per week:&nbsp;</p></div>
+        <div class="col-sm-3"><p>General Workload:&nbsp;</p></div>
         <div class="col">
+            <span>Very Light</span>
             <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                <label class="btn btn-secondary active">
-                    <input type="radio" name="time" value="1" autocomplete="off" checked> 0-1
+
+                <label class="btn btn-secondary">
+                    <input type="radio" name="time" value="1" autocomplete="off"> 1
                 </label>
                 <label class="btn btn-secondary">
-                    <input type="radio" name="time" value = "2" autocomplete="off"> 2-4
+                    <input type="radio" name="time" value = "2" autocomplete="off"> 2
                 </label>
                 <label class="btn btn-secondary">
-                    <input type="radio" name="time" value = "3" autocomplete="off"> 5-7
+                    <input type="radio" name="time" value = "3" autocomplete="off"> 3
                 </label>
                 <label class="btn btn-secondary">
-                    <input type="radio" name="time" value = "4" autocomplete="off"> 7-9
+                    <input type="radio" name="time" value = "4" autocomplete="off"> 4
                 </label>
                 <label class="btn btn-secondary">
-                    <input type="radio" name="time" value = "5" autocomplete="off"> 10+
+                    <input type="radio" name="time" value = "5" autocomplete="off"> 5
                 </label>
             </div>
+            <span>Very Heavy</span>
+
         </div>
     </div>
+
     <div class="row">
-        <div class="col-sm-3"><p>Cost of textbooks:&nbsp;</p></div>
+        <div class="col-sm-3"><p>Difficulty of Tests:&nbsp;</p></div>
+        <div class="col">
+            <span>Very Easy</span>
+            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+
+                <label class="btn btn-secondary">
+                    <input type="radio" name="diff" value="1" autocomplete="off"> 1
+                </label>
+                <label class="btn btn-secondary">
+                    <input type="radio" name="diff" value = "2" autocomplete="off"> 2
+                </label>
+                <label class="btn btn-secondary">
+                    <input type="radio" name="diff" value = "3" autocomplete="off"> 3
+                </label>
+                <label class="btn btn-secondary">
+                    <input type="radio" name="diff" value = "4" autocomplete="off"> 4
+                </label>
+                <label class="btn btn-secondary">
+                    <input type="radio" name="diff" value = "5" autocomplete="off"> 5
+                </label>
+            </div>
+            <span>Very Hard</span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-3"><p>Was a textbook required?</p></div>
         <div class="col">
             <div class="btn-group btn-group-toggle" data-toggle="buttons">
 
-                <label class="btn btn-secondary active">
-                    <input type="radio" name="cost" value = "1" autocomplete="off" checked> No Textbook
+                <label class="btn btn-secondary">
+                    <input type="radio" name="book" value = "0" autocomplete="off"> Yes
                 </label>
                 <label class="btn btn-secondary">
-                    <input type="radio" name="cost" value = "2"autocomplete="off"> $1-50
-                </label>
-                <label class="btn btn-secondary">
-                    <input type="radio" name="cost" value = "3" autocomplete="off"> $50-100
-                </label>
-                <label class="btn btn-secondary">
-                    <input type="radio" name="cost" value = "4" autocomplete="off"> $100-200
-                </label>
-                <label class="btn btn-secondary">
-                    <input type="radio" name="cost" value = "5" autocomplete="off"> $200+
+                    <input type="radio" name="book" value = "1" autocomplete="off"> Nope
                 </label>
             </div>
         </div>
@@ -58,7 +81,7 @@
             <div class="btn-group btn-group-toggle" data-toggle="buttons">
 
                 <label class="btn btn-secondary active">
-                    <input type="radio" name="recommend" value = "0" autocomplete="off" checked> Yes
+                    <input type="radio" name="recommend" value = "0" autocomplete="off"> Yes
                 </label>
                 <label class="btn btn-secondary">
                     <input type="radio" name="recommend" value = "1" autocomplete="off"> Nope
@@ -71,6 +94,7 @@
         <label for="comment">Submit a Comment:</label>
         <textarea class="form-control" name="comment" rows="5" id="comment"></textarea>
     </div>
+
     {% csrf_token %}
     <button type="submit" class="btn btn-default">Submit Review</button>
     </form>

@@ -17,7 +17,8 @@ def FrontPage(request):
     return render(request, 'FrontPage.html')
 
 def class_page(request, class_name):
-    review_list = Review.objects.filter(name=class_name)
+    c = Course.objects.filter(course_id=class_name)[0]
+    review_list = Review.objects.filter(course=c)
     course = Course.objects.filter(course_id=class_name)[0]
     return render(request, 'classPage.html', {'course': course, 'review_list': review_list})
 
@@ -71,12 +72,13 @@ def submit_review(request,class_name):
     cost = request.POST.get("cost")
     recommend = request.POST.get("recommend")
     comment = request.POST.get("comment")
-    Review.objects.create(name=class_name, text=comment, author=request.user, pub_date=datetime.datetime.now(), cost = cost, difficulty=diff, recommend=recommend)
+    c = Course.objects.filter(course_id=class_name)[0]
+    Review.objects.create(course=c, text=comment, author=request.user, pub_date=datetime.datetime.now(), cost = cost, difficulty=diff, recommend=recommend)
     return redirect(class_page, permanent=True, class_name = class_name)
 
 def rate_course(request, class_name):
     if request.user.is_authenticated:
-        course = Course.objects.filter(title=class_name)[0]
+        course = Course.objects.filter(course_id=class_name)[0]
         return render(request, 'ratingInterface.html', {'name':class_name, 'course': course})
     else:
         return redirect("/login/")

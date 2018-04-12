@@ -17,7 +17,7 @@
             <h3>{{course.full_title}}</h3>
 
 
-            <a href="/rate/{{course.title}}">Submit a Rating</a>
+            <a href="/rate/{{course}}">Submit a Rating</a>
              
         </div>
     </div>
@@ -119,27 +119,20 @@
 							<div class="review-block-name"><a href="#">{{review.author}}</a></div>
 							<div class="review-block-date">{{review.pub_date}}</div>
 						</div>
-						<div class="col-sm-8">
-							<div class="review-block-rate">
-								<button type="button" class="fas fa-star" aria-label="Left Align">
-								  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-								</button>
-								<button type="button" class="fas fa-star" aria-label="Left Align">
-								  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-								</button>
-								<button type="button" class="fas fa-star" aria-label="Left Align">
-								  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-								</button>
-								<button type="button" class="fas fa-star" aria-label="Left Align">
-								  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-								</button>
-								<button type="button" class="fas fa-star" aria-label="Left Align">
-								  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-								</button>
-							</div>
+                        <div class="col-sm-4">
+                            Workload: {{review.difficulty}}<br>
+                            Difficulty: {{review.difficulty}}<br>
+                            Textbook Required: {{review.cost}}<br>
+                            Recommended: {{review.recommend}}<br>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4"></div>
+                        <div class="col-sm-8">
 							<div class="review-block-description">{{review.text}}</div>
 						</div>
-                    </div><br><br>
+                    </div>
+                    <hr>
                     {% endfor %}
                 </div>
             </div>
