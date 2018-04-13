@@ -18,7 +18,7 @@ def FrontPage(request):
 
 def class_page(request, class_name):
     c = Course.objects.filter(course_id=class_name)[0]
-    review_list = Review.objects.filter(course=c)
+    review_list = Review.objects.filter(course=c)[::-1]
     course = Course.objects.filter(course_id=class_name)[0]
     return render(request, 'classPage.html', {'course': course, 'review_list': review_list})
 
@@ -68,12 +68,13 @@ def advanced_results(request):
 
 
 def submit_review(request,class_name):
-    diff = request.POST.get("time")
-    cost = request.POST.get("cost")
+    workload = request.POST.get("time")
+    diff = request.POST.get("diff")
+    has_book = request.POST.get("book")
     recommend = request.POST.get("recommend")
     comment = request.POST.get("comment")
     c = Course.objects.filter(course_id=class_name)[0]
-    Review.objects.create(course=c, text=comment, author=request.user, pub_date=datetime.datetime.now(), cost = cost, difficulty=diff, recommend=recommend)
+    Review.objects.create(course=c, text=comment, author=request.user, pub_date=datetime.datetime.now(), has_book = has_book, workload = workload, test_difficulty=diff, recommend=recommend)
     return redirect(class_page, permanent=True, class_name = class_name)
 
 def rate_course(request, class_name):

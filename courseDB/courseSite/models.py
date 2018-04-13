@@ -14,7 +14,7 @@ class Course(models.Model):
     description = models.TextField()
     instructor = models.CharField(max_length=150)
     days = models.CharField(max_length=5)
-    times = models.CharField(max_length=10)
+    times = models.CharField(max_length=20)
 
     def __str__(self):
         return self.course_id
@@ -24,8 +24,9 @@ class Review(models.Model):
     text = models.TextField()
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     pub_date = models.DateTimeField(auto_now_add='true')
-    cost = models.IntegerField(null=True)
-    difficulty = models.IntegerField(null=True)
+    workload = models.IntegerField(null=True)
+    test_difficulty = models.IntegerField(null=True)
     recommend = models.IntegerField(null=True)
+    has_book = models.IntegerField(null=True)
 
 
