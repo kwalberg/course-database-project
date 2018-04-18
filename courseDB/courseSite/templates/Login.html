@@ -1,66 +1,44 @@
 {% extends "public/base.html" %}
 {% load staticfiles %}
 {% block content %}
-<<<<<<< Updated upstream
-<!--<form method = "POST">
-    {% csrf_token %}
-    <div class="form-group">
-        <label for="inputEmail">Email</label>
-        <input type="email" class="form-control" id="inputEmail" placeholder="Email">
-    </div>
-    <div class="form-group">
-        <label for="inputPassword">Password</label>
-        <input type="password" class="form-control" name =
-                passowrd id="inputPassword"
-               placeholder="Password">
-    </div>
-    <div class="checkbox">
-        <label><input type="checkbox"> Remember me</label>
-    </div>
-    <button type="submit" class="btn btn-primary">Login</button>
-</form>-->
-=======
->>>>>>> Stashed changes
 
-
-
-
+<style>
+.center {
+    margin: auto;
+    width: 60%;
+    border: 3px solid #73AD21;
+    padding: 10px;
+}
+</style>
 <body>
-<<<<<<< Updated upstream
+
+<div class = container>
+    <div class = center>
     <form method="POST" >
         {% csrf_token %}
+
         <div class="form-group">
             <label>Username</label>
-            <input type="text" name="username">
+            <input type="text" name="username" placeholder="username">
         </div>
+
         <div class="form-group">
             <label>Password</label>
-            <input type="password" name="password">
+            <input type="password" name="password" placeholder="password">
         </div>
+
         <!--<div class="form-check">
             <input class="form-check-input" type="checkbox" value="" id="rememberMe">
             <label class="form-check-label" for="rememberMe">Remember me</label>
         </div>-->
-        <button type="submit">Login</button>
+        <button type="submit" class="btn btn-primary">Login</button>
 
     </form>
 
-=======
-    <form method="POST">
-        {% csrf_token %}
-        <p>
-            <label>Username</label>
-            <input type="text" name="username">
-        </p>
-        <p>
-            <label>Password</label>
-            <input type="password" name="password">
-        </p>
-        <button type="submit">Login</button>
-    </form>
+    <small>Don't have an account? <a href="{% url 'signup' %}">Click here to sign up!</a></small>
+</div>
 
->>>>>>> Stashed changes
-    <p>Don't have an account? <a href="{% url 'signup' %}">Click here to sign up!</a></p>
+    </div>
 </body>
 
 {% endblock %}

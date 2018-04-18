@@ -1,7 +1,8 @@
 from django.db import models
 from django import forms
 from django.contrib.auth.models import User
-
+from taggit.managers import TaggableManager
+import django_tables2 as tables
 # Create your models here.
 
 
@@ -18,6 +19,7 @@ class Course(models.Model):
 
     def __str__(self):
         return self.course_id
+
 
 class Review(models.Model):
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
