@@ -1,6 +1,7 @@
 {% extends "public/base.html" %}
 {% load staticfiles %}
 {% block content %}
+<<<<<<< Updated upstream
 <!--<form method = "POST">
     {% csrf_token %}
     <div class="form-group">
@@ -18,11 +19,14 @@
     </div>
     <button type="submit" class="btn btn-primary">Login</button>
 </form>-->
+=======
+>>>>>>> Stashed changes
 
 
 
 
 <body>
+<<<<<<< Updated upstream
     <form method="POST" >
         {% csrf_token %}
         <div class="form-group">
@@ -41,6 +45,21 @@
 
     </form>
 
+=======
+    <form method="POST">
+        {% csrf_token %}
+        <p>
+            <label>Username</label>
+            <input type="text" name="username">
+        </p>
+        <p>
+            <label>Password</label>
+            <input type="password" name="password">
+        </p>
+        <button type="submit">Login</button>
+    </form>
+
+>>>>>>> Stashed changes
     <p>Don't have an account? <a href="{% url 'signup' %}">Click here to sign up!</a></p>
 </body>
 
