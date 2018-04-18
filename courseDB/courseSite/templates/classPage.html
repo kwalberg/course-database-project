@@ -108,35 +108,31 @@
         </div>
     </div>
 
-    <div class="row">
-			<div class="col-sm-7">
-				<hr/>
-				<div class="review-block">
+    <hr/>
+    <div class="review-block">
 
-                    {% for review in review_list %}
-                    <div class="row">
-						<div class="col-sm-4">
-							<div class="review-block-name"><a href="#">{{review.author}}</a></div>
-							<div class="review-block-date">{{review.pub_date}}</div>
-						</div>
-                        <div class="col-sm-4">
-                            Workload: {{review.workload}}<br>
-                            Difficulty: {{review.test_difficulty}}<br>
-                            Textbook Required: {{review.has_book}}<br>
-                            Recommended: {{review.recommend}}<br>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-4"></div>
-                        <div class="col-sm-8">
-							<div class="review-block-description">{{review.text}}</div>
-						</div>
-                    </div>
-                    <hr>
-                    {% endfor %}
-                </div>
+        {% for review in review_list %}
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="review-block-name"><a href="#">{{review.author}}</a></div>
+                Workload: {{review.workload}}<br>
+                Difficulty: {{review.test_difficulty}}<br>
+                Textbook Required: {{review.get_has_book}}<br>
+                Recommended: {{review.get_recommend}}<br>
             </div>
+            <div class="col-sm-4">
+                <div class="review-block-date">Posted {{review.pub_date}}</div>
+                <div class="review-block-description">{{review.text}}</div>
+            </div>
+            <div class="col-sm-4">
+                Tags:<br>
+
+            </div>
+        </div>
+        <hr>
+        {% endfor %}
     </div>
+
 </div>
 </body>
 </html>

@@ -32,4 +32,14 @@ class Review(models.Model):
     recommend = models.IntegerField(null=True)
     has_book = models.IntegerField(null=True)
 
+    def get_has_book(self):
+        if self.has_book == "0":
+            return "No"
+        else:
+            return "Yes"
 
+    def get_recommend(self):
+        if self.recommend == "0":
+            return "No"
+        else:
+            return "Yes"
