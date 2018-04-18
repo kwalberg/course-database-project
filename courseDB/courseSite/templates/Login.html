@@ -1,44 +1,117 @@
 {% extends "public/base.html" %}
 {% load staticfiles %}
+{% load static %}
 {% block content %}
 
 <style>
-.center {
-    margin: auto;
-    width: 60%;
-    border: 3px solid #73AD21;
-    padding: 10px;
+html,
+body {
+  height: 100%;
 }
+
+body {
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: flex;
+  -ms-flex-align: center;
+  -ms-flex-pack: center;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #f5f5f5;
+}
+
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+.form-signin .checkbox {
+  font-weight: 400;
+}
+.form-signin .form-control {
+  position: relative;
+  box-sizing: border-box;
+  height: auto;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
 </style>
-<body>
 
-<div class = container>
-    <div class = center>
-    <form method="POST" >
+  <body class="text-center">
+    <form class="form-signin" method="POST">
         {% csrf_token %}
+      <img class="mb-4" src=>
+      <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
 
-        <div class="form-group">
-            <label>Username</label>
-            <input type="text" name="username" placeholder="username">
+     <div class="form-group">
+             <label class="sr-only">Username</label>
+            <input type="text"  class="form-control" name="username" placeholder="username" required autofocus>
         </div>
 
         <div class="form-group">
-            <label>Password</label>
-            <input type="password" name="password" placeholder="password">
+            <label class="sr-only">Password</label>
+            <input type="password"  class="form-control" name="password" placeholder="password" required>
         </div>
+      <div class="checkbox mb-3">
+        <label>
+          <input type="checkbox" value="remember-me"> Remember me
+        </label>
+      </div>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+      <p class="mt-5 mb-3 text-muted">&copy; Software Dev</p>
 
-        <!--<div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="rememberMe">
-            <label class="form-check-label" for="rememberMe">Remember me</label>
-        </div>-->
-        <button type="submit" class="btn btn-primary">Login</button>
-
+            <small>Don't have an account? <a href="{% url 'signup' %}">Click here to sign up!</a></small>
     </form>
+  </body>
 
-    <small>Don't have an account? <a href="{% url 'signup' %}">Click here to sign up!</a></small>
-</div>
 
-    </div>
-</body>
+<!--<div class = container>-->
+
+    <!--<div class = center>-->
+    <!--<form method="POST" >-->
+        <!--{% csrf_token %}-->
+
+        <!--<div class="form-group">-->
+            <!--<label>Username</label>-->
+            <!--<input type="text" name="username" placeholder="username">-->
+        <!--</div>-->
+
+        <!--<div class="form-group">-->
+            <!--<label>Password</label>-->
+            <!--<input type="password" name="password" placeholder="password">-->
+        <!--</div>-->
+
+        <!--&lt;!&ndash;<div class="form-check">-->
+            <!--<input class="form-check-input" type="checkbox" value="" id="rememberMe">-->
+            <!--<label class="form-check-label" for="rememberMe">Remember me</label>-->
+        <!--</div>&ndash;&gt;-->
+        <!--<button type="submit" class="btn btn-primary">Login</button>-->
+
+    <!--</form>-->
+
+    <!--<small>Don't have an account? <a href="{% url 'signup' %}">Click here to sign up!</a></small>-->
+<!--</div>-->
+
+    <!--</div>-->
+
 
 {% endblock %}

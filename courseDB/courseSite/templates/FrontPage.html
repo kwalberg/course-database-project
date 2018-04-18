@@ -1,59 +1,19 @@
 {% extends "public/base.html" %}
-
+ {% load static %}
 {% block content %}
-<html>
-<head>
-<style>
-    body {
-    padding-top: 333px;
-    padding-left: 600px;
-}
-.dropdown.dropdown-lg .dropdown-menu {
-    margin-top: -1px;
-    padding: 6px 20px;
-}
-.input-group-btn .btn-group {
-    display: flex !important;
-}
-.btn-group .btn {
-    border-radius: 0;
-    margin-left: -1px;
-}
-.btn-group .btn:last-child {
-    border-top-right-radius: 4px;
-    border-bottom-right-radius: 4px;
-}
-.btn-group .form-horizontal .btn[type="submit"] {
-  border-top-left-radius: 4px;
-  border-bottom-left-radius: 4px;
-}
-.form-horizontal .form-group {
-    margin-left: 0;
-    margin-right: 0;
-}
-.form-group .form-control:last-child {
-    border-top-left-radius: 4px;
-    border-bottom-left-radius: 4px;
-}
 
-@media screen and (min-width: 768px) {
-    #adv-search {
-        width: 700px;
-        margin: 0 auto;
-    }
-    .dropdown.dropdown-lg {
-        position: static !important;
-    }
-    .dropdown.dropdown-lg .dropdown-menu {
-        min-width: 675px;
-    }
-}
-</style>
-</head>
-<body>
+<!DOCTYPE html>
+<html lang="en">
+  <body>
 
-<div class="h-100 row align-items-center">
-<form class="input-group stylish-input-group" action="/advancedresults/" method="post">
+
+    <main role="main">
+
+      <!-- Main jumbotron for a primary marketing message or call to action -->
+      <div class="jumbotron">
+        <div class="container">
+          <h1 class="display-3">Let's be smarter about choosing classes, too.</h1>
+            <form class="input-group stylish-input-group" action="/advancedresults/" method="post">
                  <div class="form-inline">
                       <div class="form-group">
                         <input type="search" class="form-control" name = "query" placeholder="Find a class">
@@ -94,17 +54,145 @@
         </form>
 </div>
 
+        </div>
+      </div>
+
+      <div class="container">
+        <!-- Example row of columns -->
+        <div class="row">
+          <div class="col-md-4">
+            <h2>Topics in African American Literature</h2>
+            <p>This course will explore African American cultural production and, depending on the instructor, may focus on a particular genre (e.g. novels, short stories, drama, poetry, detective fiction, speculative fiction), or a particular theme (e.g. The Protest Tradition, Black Feminist Writings), or on a particular period (e.g. the 1820s-1860s, the Harlem Renaissance, the 1950s), or on a particular author or authors (e.g. Douglass, Du Bois, Baldwin, Wideman, Morrison, Parks). </p>
+            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+          </div>
+          <div class="col-md-4">
+            <h2>Analytical Chemistry</h2>
+            <p>This course uses key concepts of chemical equilibrium and structure to solve problems in chemical analysis. Lecture and laboratory work provide both the theoretical foundations and practical training in classical methods (gravimetric and volumetric analysis), atomic and molecular spectroscopy, and chromatography. Statistics and error analysis are also emphasized throughout the course./p>
+            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+          </div>
+          <div class="col-md-4">
+            <h2>Greek Myths</h2>
+            <p>This course studies some of the world's great storytellers-the ancient Greeks. First, we read from translations of Greek poetry to become familiar with the key figures and events in mythology, including the Olympian gods and their origins, the major heroes, and the Trojan War.</p>
+            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+          </div>
+        </div>
+
+        <hr>
+
+      </div> <!-- /container -->
+
+    </main>
+
+    <footer class="container">
+      <p>&copy; Software Dev Team 3 (Because we only have 3 people *sob*</p>
+    </footer>
+
+</html>
+
+
+<!--<head>-->
+<!--<style>-->
+    <!--body {-->
+    <!--padding-top: 333px;-->
+    <!--padding-left: 600px;-->
+<!--}-->
+<!--.dropdown.dropdown-lg .dropdown-menu {-->
+    <!--margin-top: -1px;-->
+    <!--padding: 6px 20px;-->
+<!--}-->
+<!--.input-group-btn .btn-group {-->
+    <!--display: flex !important;-->
+<!--}-->
+<!--.btn-group .btn {-->
+    <!--border-radius: 0;-->
+    <!--margin-left: -1px;-->
+<!--}-->
+<!--.btn-group .btn:last-child {-->
+    <!--border-top-right-radius: 4px;-->
+    <!--border-bottom-right-radius: 4px;-->
+<!--}-->
+<!--.btn-group .form-horizontal .btn[type="submit"] {-->
+  <!--border-top-left-radius: 4px;-->
+  <!--border-bottom-left-radius: 4px;-->
+<!--}-->
+<!--.form-horizontal .form-group {-->
+    <!--margin-left: 0;-->
+    <!--margin-right: 0;-->
+<!--}-->
+<!--.form-group .form-control:last-child {-->
+    <!--border-top-left-radius: 4px;-->
+    <!--border-bottom-left-radius: 4px;-->
+<!--}-->
+
+<!--@media screen and (min-width: 768px) {-->
+    <!--#adv-search {-->
+        <!--width: 700px;-->
+        <!--margin: 0 auto;-->
+    <!--}-->
+    <!--.dropdown.dropdown-lg {-->
+        <!--position: static !important;-->
+    <!--}-->
+    <!--.dropdown.dropdown-lg .dropdown-menu {-->
+        <!--min-width: 675px;-->
+    <!--}-->
+<!--}-->
+<!--</style>-->
+<!--</head>-->
+<!--<body>-->
+
+<!--<div class="h-100 row align-items-center">-->
+<!--<form class="input-group stylish-input-group" action="/advancedresults/" method="post">-->
+                 <!--<div class="form-inline">-->
+                      <!--<div class="form-group">-->
+                        <!--<input type="search" class="form-control" name = "query" placeholder="Find a class">-->
+                        <!--{% csrf_token %}-->
+                      <!--</div>-->
+                      <!--<button type="submit" class="btn btn-primary">Search</button>-->
+                  <!--</div>-->
+                    <!--<div class="btn-group"  role="group">-->
+                        <!--<div class="dropdown dropdown-lg">-->
+                            <!--<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span>Advanced</button>-->
+                            <!--<div class="dropdown-menu dropdown-menu-right" role="menu">-->
+                                <!--<div class="form-horizontal">-->
+                                  <!--<div class="form-group">-->
+                                    <!--<label for="filter">Filter by</label>-->
+                                    <!--<select name="category" class="form-control">-->
+                                        <!--<option name="category" value="0" selected>All</option>-->
+                                        <!--<option name="category" value="1">Instructor</option>-->
+                                        <!--<option name="category" value="2">Department</option>-->
+                                        <!--<option name="category" value="3">Class Title</option>-->
+                                        <!--<option name="category" value="4">Top rated</option>-->
+                                        <!--<option name="category" value="5">Most commented</option>-->
+                                    <!--</select>-->
+                                  <!--</div>-->
+                                  <!--<div class="form-group">-->
+                                    <!--<label for="contain">Ratings</label>-->
+                                    <!--<input class="form-control" type="text" />-->
+                                  <!--</div>-->
+                                  <!--<div class="form-group">-->
+                                    <!--<label for="contain">Contains the words</label>-->
+                                    <!--<input class="form-control" type="text" />-->
+                                  <!--</div>-->
+                                  <!--<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>Search</button>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+              <!--</form>-->
+        <!--</form>-->
+<!--</div>-->
 
 
 
 
-</body>
+
+<!--</body>-->
 <script>
     $('.dropdown-menu').click(function(e) {
         e.stopPropagation();
     });
 </script>
-</html>
+
 
 
 

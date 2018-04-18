@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'courseSite.apps.CourseSiteConfig',
     'django_filters',
     'star_ratings',
+    'taggit',
 ]
 
 MIDDLEWARE = [

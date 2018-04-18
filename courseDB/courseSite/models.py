@@ -16,6 +16,7 @@ class Course(models.Model):
     instructor = models.CharField(max_length=150)
     days = models.CharField(max_length=5)
     times = models.CharField(max_length=20)
+    tags = TaggableManager()
 
     def __str__(self):
         return self.course_id
