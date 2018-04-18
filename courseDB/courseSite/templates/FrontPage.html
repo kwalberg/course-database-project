@@ -5,8 +5,16 @@
 <!DOCTYPE html>
 <html lang="en">
   <body>
+  <head>
+  <style>
+      #advanced-search{
+          min-width: 450px;
+          color: black;
+      }
 
 
+  </style>
+  </head>
     <main role="main">
 
       <!-- Main jumbotron for a primary marketing message or call to action -->
@@ -16,7 +24,7 @@
             <form class="input-group stylish-input-group" action="/advancedresults/" method="post">
                  <div class="form-inline">
                       <div class="form-group">
-                        <input type="search" class="form-control" name = "query" placeholder="Find a class">
+                        <input id="advanced-search" type="search" class="form-control" name = "query" placeholder="Find a class">
                         {% csrf_token %}
                       </div>
                       <button type="submit" class="btn btn-primary">Search</button>

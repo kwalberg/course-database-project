@@ -17,4 +17,6 @@ urlpatterns = [
     path('submit_review/<str:class_name>/', views.submit_review, name='submit_review'),
     url('signup/', views.signup, name='signup'),
     path('accounts/', include('django.contrib.auth.urls'))
+
 ]
+
