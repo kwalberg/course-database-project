@@ -1,10 +1,8 @@
 {% extends "public/base.html" %}
- {% load static %}
+{% load static %}
 {% block content %}
 
-<!DOCTYPE html>
-<html lang="en">
-  <body>
+
   <head>
   <style>
       #advanced-search{
@@ -61,31 +59,21 @@
               </form>
         </form>
 </div>
-
-        </div>
+      </div>
       </div>
 
       <div class="container">
-        <!-- Example row of columns -->
-        <div class="row">
-          <div class="col-md-4">
-            <h2>Topics in African American Literature</h2>
-            <p>This course will explore African American cultural production and, depending on the instructor, may focus on a particular genre (e.g. novels, short stories, drama, poetry, detective fiction, speculative fiction), or a particular theme (e.g. The Protest Tradition, Black Feminist Writings), or on a particular period (e.g. the 1820s-1860s, the Harlem Renaissance, the 1950s), or on a particular author or authors (e.g. Douglass, Du Bois, Baldwin, Wideman, Morrison, Parks). </p>
-            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-          </div>
-          <div class="col-md-4">
-            <h2>Analytical Chemistry</h2>
-            <p>This course uses key concepts of chemical equilibrium and structure to solve problems in chemical analysis. Lecture and laboratory work provide both the theoretical foundations and practical training in classical methods (gravimetric and volumetric analysis), atomic and molecular spectroscopy, and chromatography. Statistics and error analysis are also emphasized throughout the course./p>
-            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-          </div>
-          <div class="col-md-4">
-            <h2>Greek Myths</h2>
-            <p>This course studies some of the world's great storytellers-the ancient Greeks. First, we read from translations of Greek poetry to become familiar with the key figures and events in mythology, including the Olympian gods and their origins, the major heroes, and the Trojan War.</p>
-            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-          </div>
-        </div>
+            <div class="row">
+            {% for class in most_popular %}
+            <div class="col-md-4">
+                <h2>{{class.full_title}}</h2>
+                <p> {{class.description}}</p>
+                <p><a class="btn btn-secondary" href="/class/{{class.course_id}}" role="button">View details &raquo;</a></p>
+            </div>
+            {% endfor %}
+            </div>
 
-        <hr>
+          <hr>
 
       </div> <!-- /container -->
 
@@ -95,7 +83,6 @@
       <p>&copy; Software Dev Team 3 (Because we only have 3 people *sob*</p>
     </footer>
 
-</html>
 
 
 <!--<head>-->

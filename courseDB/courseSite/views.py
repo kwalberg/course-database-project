@@ -14,7 +14,8 @@ def getCatalog(request):
     return render(request,'Catalog.html', {'class_list': Course.objects.all()})
 
 def FrontPage(request):
-    return render(request, 'FrontPage.html')
+    most_popular = Course.objects.all()[0:3]
+    return render(request, 'FrontPage.html', {'most_popular': most_popular})
 
 def class_page(request, class_name):
     c = Course.objects.filter(course_id=class_name)[0]
