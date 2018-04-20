@@ -64,7 +64,7 @@ def advanced_results(request):
         class_list = retrieveInstructor(request)
     if value == "2":
         class_list = retrieveDepartment(request)
-    return render(request, 'searchResults.html', {'query': query, 'class_list': class_list})
+    return render(request, 'searchResults.html', {'query': value, 'class_list': class_list})
 
 
 
@@ -83,7 +83,7 @@ def rate_course(request, class_name):
         course = Course.objects.filter(course_id=class_name)[0]
         return render(request, 'ratingInterface.html', {'name':class_name, 'course': course})
     else:
-        return redirect("/login/")
+        return redirect(f"/login/?next={request.path}")
 
 def signup(request):
     if request.method == 'POST':
