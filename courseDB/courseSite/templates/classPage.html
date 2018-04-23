@@ -9,6 +9,7 @@
   <title>Bootstrap Example</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
   <style>
@@ -16,7 +17,7 @@
 
 
     /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
-    .row.content {height: 1000px}
+    .row.content {height: 10000px}
 
     /* Set gray background color and 100% height */
     .sidenav {
@@ -59,6 +60,7 @@
 .rating{
 	width: 50%;
 	float:left;
+    padding-bottom: 20px;
 }
 .rating p{
 	margin-top:10px;
@@ -104,11 +106,15 @@
     @media (min-width:320px) and (max-width:640px){
 	.rating{
 		width: 100%;
+
 	}
 	.rating-process{
 		width:100%;
 	}
 }
+    .star-ratings-rating-stars-container{
+        width: 20px;
+    }
 
 
     .progress{
@@ -119,6 +125,7 @@
     margin: 0 auto;
     box-shadow: none;
     position: relative;
+
 }
 .progress:after{
     content: "";
@@ -130,6 +137,7 @@
     position: absolute;
     top: 0;
     left: 0;
+
 }
 .progress > span{
     width: 50%;
@@ -185,28 +193,17 @@
     left: 5%;
 }
 .progress.blue .progress-bar{
-    border-color: #049dff;
+    border-color: #6DDCBD;
 }
 .progress.blue .progress-left .progress-bar{
     animation: loading-2 1.5s linear forwards 1.8s;
 }
 .progress.yellow .progress-bar{
-    border-color: #fdba04;
+    border-color: #6DDCBD;
 }
 .progress.yellow .progress-left .progress-bar{
     animation: loading-3 1s linear forwards 1.8s;
-}
-.progress.pink .progress-bar{
-    border-color: #ed687c;
-}
-.progress.pink .progress-left .progress-bar{
-    animation: loading-4 0.4s linear forwards 1.8s;
-}
-.progress.green .progress-bar{
-    border-color: #1abc9c;
-}
-.progress.green .progress-left .progress-bar{
-    animation: loading-5 1.2s linear forwards 1.8s;
+
 }
 @keyframes loading-1{
     0%{
@@ -238,26 +235,7 @@
         transform: rotate(90deg);
     }
 }
-@keyframes loading-4{
-    0%{
-        -webkit-transform: rotate(0deg);
-        transform: rotate(0deg);
-    }
-    100%{
-        -webkit-transform: rotate(36deg);
-        transform: rotate(36deg);
-    }
-}
-@keyframes loading-5{
-    0%{
-        -webkit-transform: rotate(0deg);
-        transform: rotate(0deg);
-    }
-    100%{
-        -webkit-transform: rotate(126deg);
-        transform: rotate(126deg);
-    }
-}
+
 @media only screen and (max-width: 990px){
     .progress{ margin-bottom: 20px; }
 }
@@ -292,40 +270,26 @@
             <span> &emsp; &emsp; {{course.days}} : {{course.times}} </span>
         </div>
 
+
+
         <div class="rating-card">
 		<div><h1>Summary</h1></div>
-		<div class="rating">
+        <div class="row">
+       <div class="rating">
 			<h2>4.0</h2>
-			<i aria-hidden="true" class="fa fa-star"></i>
-			<i aria-hidden="true" class="fa fa-star"></i>
-			<i aria-hidden="true" class="fa fa-star"></i>
-			<i aria-hidden="true" class="fa fa-star"></i>
-			<i aria-hidden="true" class="fa fa-star-o"></i>
+
 			<p><i class="fa fa-user" aria-hidden="true"></i> 16 total</p>
-		</div>
-		<div class="rating-process">
-			<div class="rating-right-part">
-				<p><i aria-hidden="true" class="fa fa-star"></i> 80%</p>
-				<div class="progress-1"></div>
-			</div>
-			<div class="rating-right-part">
-				<p><i aria-hidden="true" class="fa fa-star"></i> 60%</p>
-				<div class="progress-2"></div>
-			</div>
-			<div class="rating-right-part">
-				<p><i aria-hidden="true" class="fa fa-star"></i> 40%</p>
-				<div class="progress-3"></div>
-			</div>
-			<div class="rating-right-part">
-				<p><i aria-hidden="true" class="fa fa-star"></i> 20%</p>
-				<div class="progress-4"></div>
-			</div>
-			<div class="rating-right-part">
-				<p><i aria-hidden="true" class="fa fa-star"></i> 10%</p>
-				<div class="progress-5"></div>
-			</div>
-		</div>
-		<div style="clear:both;"></div>
+                        <div class ="stars">
+		                    <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+		                    <div style="clear:both;"></div>
+                        </div>
+       </div>
+        </div>
+
 
         <div class="row">
         <div class="col-md-3 col-sm-6">
@@ -339,6 +303,7 @@
                 <div class="progress-value">90%</div>
             </div>
         </div>
+            <p><h5>Recommend to a Friend</h5></p>
         <div class="col-md-3 col-sm-6">
             <div class="progress yellow">
                 <span class="progress-left">
@@ -354,9 +319,11 @@
 
 	</div>
 
+
     <div class="row">
 			<div class="col-sm-7">
 				<hr>
+                <h1>Individual Reviews</h1>
 				<div class="review-block">
 
         {% for review in review_list %}
