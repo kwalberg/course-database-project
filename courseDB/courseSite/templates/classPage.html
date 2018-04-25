@@ -17,7 +17,7 @@
 
 
     /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
-    .row.content {height: 10000px}
+    .row.content {height: 3000px}
 
     /* Set gray background color and 100% height */
     .sidenav {
@@ -28,7 +28,13 @@
 
     .col-sm-8 {
         padding-top: 30px;
+
+
     }
+    .nowrap{
+        white-space: nowrap;
+    }
+
 
 
     /* On small screens, set height to 'auto' for sidenav and grid */
@@ -50,23 +56,29 @@
 	margin-top:30px;
 	box-shadow: 2px 2px 18px -2px #337AB7;
 }
-.fa-star,.fa-star-o{
-	color:orange;
+
+.checked {
+    color: orange;
+}
+.fa-star{
+    width: 15px;
 }
 .rating-card h1{
 	color:#372049;
 	margin-bottom:30px;
 }
-.rating{
-	width: 50%;
+.class-overall-rating{
+	width: 30%;
 	float:left;
     padding-bottom: 20px;
+    padding-left: 140px;
 }
-.rating p{
+.class-overall-rating p{
 	margin-top:10px;
 	font-size: 20px;
+
 }
-.rating h2{
+.class-overall-rating h2{
 	margin:0px;
 	font-size:60px;
 	font-weight: normal;
@@ -82,6 +94,9 @@
 }
 .rating-right-part p{
 	margin:0px;
+}
+.difficulty-rating{
+
 }
 .progress-1,.progress-2,.progress-3,.progress-4,.progress-5{
     background:#c2c2c2;
@@ -158,6 +173,7 @@
     border-style: solid;
     position: absolute;
     top: 0;
+
 }
 .progress .progress-left .progress-bar{
     left: 100%;
@@ -201,10 +217,12 @@
 .progress.yellow .progress-bar{
     border-color: #6DDCBD;
 }
+
 .progress.yellow .progress-left .progress-bar{
     animation: loading-3 1s linear forwards 1.8s;
 
 }
+
 @keyframes loading-1{
     0%{
         -webkit-transform: rotate(0deg);
@@ -251,7 +269,9 @@
 
 
 
+
 <div class="container-fluid text-center">
+
   <div class="row content">
     <div class="col-sm-2 sidenav">
 
@@ -260,23 +280,37 @@
       <h1>{{course.full_title}} &emsp; &emsp;  <a align = "right" href="/rate/{{course}}">Submit a Rating</a></h1>
       <p>{{course.description}}</p>
       <hr>
+
       <h2>Overview</h2>
-        <div class="col-sm-8 text-left">
-            <label>Instructor</label>
-            <span> &emsp; &emsp;{{course.instructor}} </span>
+        <div class="row">
+            <div class="col-sm-6">
+                    <label>Instructor:</label>
+                    <span class="nowrap"> &emsp; &emsp; &nbsp; {{course.instructor}}</span>
+            </div>
+            <div class="col-sm-6">
+                <label>Department:</label>
+                <span class="nowrap"> &emsp; &emsp; &nbsp; {{course.department}}</span>
+            </div>
         </div>
-        <div class="col-sm-8 text-left">
-            <label>Meeting Times</label>
-            <span> &emsp; &emsp; {{course.days}} : {{course.times}} </span>
+        <div class="row">
+            <div class="col-sm-6">
+                <label>Meeting Times:</label>
+                <span> &emsp; {{course.days}} : {{course.times}} </span>
+            </div>
+            <div class="col-sm-6">
+                <label>Class Title:</label>
+                <span> &emsp; {{course.course_id}} </span>
+            </div>
         </div>
 
 
 
         <div class="rating-card">
 		<div><h1>Summary</h1></div>
+
         <div class="row">
-       <div class="rating">
-			<h2>4.0</h2>
+            <div class="class-overall-rating">
+                <h2>4.0</h2>
 
 			<p><i class="fa fa-user" aria-hidden="true"></i> 16 total</p>
                         <div class ="stars">
@@ -287,12 +321,29 @@
                             <span class="fa fa-star"></span>
 		                    <div style="clear:both;"></div>
                         </div>
-       </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-10">
+                    <div class="difficulty-rating">
+                        <h3>Difficulty</h3>
+                        <h3>3.5</h3>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="HwTime">
+                        <h3>Time Spent on HW</h3>
+                    </div>
+                </div>
+            </div>
         </div>
+
+
+
 
 
         <div class="row">
         <div class="col-md-3 col-sm-6">
+
             <div class="progress blue">
                 <span class="progress-left">
                     <span class="progress-bar"></span>
@@ -302,8 +353,8 @@
                 </span>
                 <div class="progress-value">90%</div>
             </div>
+            <p> Recommend to a Friend</p>
         </div>
-            <p><h5>Recommend to a Friend</h5></p>
         <div class="col-md-3 col-sm-6">
             <div class="progress yellow">
                 <span class="progress-left">
@@ -314,6 +365,8 @@
                 </span>
                 <div class="progress-value">75%</div>
             </div>
+            <p style="text-align:center;"> Approve of Teaching Style</p>
+
         </div>
     </div>
 

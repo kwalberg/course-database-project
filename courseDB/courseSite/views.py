@@ -49,7 +49,7 @@ def retrieveInstructor(request):
 def retrieveDepartment(request):
     query = request.POST.get("query", "")
     entries = Course.objects.filter(
-        Q(full_title__icontains= query)
+        Q(department__icontains= query)
     ).distinct()
 
     return entries
@@ -64,7 +64,7 @@ def advanced_results(request):
         class_list = retrieveInstructor(request)
     if value == "2":
         class_list = retrieveDepartment(request)
-    return render(request, 'searchResults.html', {'query': value, 'class_list': class_list})
+    return render(request, 'searchResults.html', {'query': query, 'class_list': class_list})
 
 
 
