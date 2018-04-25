@@ -3,96 +3,94 @@
 {% block content %}
 
 
-  <head>
-  <style>
-      #advanced-search{
-          min-width: 450px;
-          color: black;
-      }
+<head>
+<style>
+  #advanced-search{
+      min-width: 450px;
+      color: black;
+  }
 
 
-  </style>
-  </head>
-    <main role="main">
+</style>
+</head>
+<main role="main">
 
-      <!-- Main jumbotron for a primary marketing message or call to action -->
-      <div class="jumbotron">
-        <div class="container">
-          <h1 class="display-3">Let's be smarter about choosing classes, too.</h1>
-            <form class="input-group stylish-input-group" action="/advancedresults/" method="post">
-                 <div class="form-inline">
-                      <div class="form-group">
-                        <input id="advanced-search" type="search" class="form-control" name = "query" placeholder="Find a class">
-                        {% csrf_token %}
-                      </div>
-                      <button type="submit" class="btn btn-primary">Search</button>
+  <!-- Main jumbotron for a primary marketing message or call to action -->
+  <div class="jumbotron">
+    <div class="container">
+      <h1 class="display-3">Let's be smarter about choosing classes, too.</h1>
+        <form class="input-group stylish-input-group" action="/advancedresults/" method="post">
+             <div class="form-inline">
+                  <div class="form-group">
+                    <input id="advanced-search" type="search" class="form-control" name = "query" placeholder="Find a class">
+                    {% csrf_token %}
                   </div>
-                    <div class="btn-group"  role="group">
-                        <div class="dropdown dropdown-lg">
-                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span>Advanced</button>
-                            <div class="dropdown-menu dropdown-menu-right" role="menu">
-                                <div class="form-horizontal">
-                                  <div class="form-group">
-                                    <label for="filter">Filter by</label>
-                                    <select name="category" class="form-control">
-                                        <option name="category" value="0" selected>All</option>
-                                        <option name="category" value="1">Instructor</option>
-                                        <option name="category" value="2">Department</option>
-                                        <option name="category" value="3">Class Title</option>
-                                        <option name="category" value="4">Top rated</option>
-                                        <option name="category" value="5">Most commented</option>
-                                    </select>
-                                  </div>
-                                  <div class="form-group">
-                                    <label for="contain">Ratings</label>
-                                    <input class="form-control" type="text" />
-                                  </div>
-                                  <div class="form-group">
-                                    <label for="contain">Contains the words</label>
-                                    <input class="form-control" type="text" />
-                                  </div>
-                                  <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>Search</button>
-                                </div>
+                  <button type="submit" class="btn btn-primary">Search</button>
+              </div>
+                <div class="btn-group"  role="group">
+                    <div class="dropdown dropdown-lg">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span>Advanced</button>
+                        <div class="dropdown-menu dropdown-menu-right" role="menu">
+                            <div class="form-horizontal">
+                              <div class="form-group">
+                                <label for="filter">Filter by</label>
+                                <select name="category" class="form-control">
+                                    <option name="category" value="0" selected>All</option>
+                                    <option name="category" value="1">Instructor</option>
+                                    <option name="category" value="2">Department</option>
+                                    <option name="category" value="3">Class Title</option>
+                                    <option name="category" value="4">Top rated</option>
+                                    <option name="category" value="5">Most commented</option>
+                                </select>
+                              </div>
+                              <div class="form-group">
+                                <label for="contain">Ratings</label>
+                                <input class="form-control" type="text" />
+                              </div>
+                              <div class="form-group">
+                                <label for="contain">Contains the words</label>
+                                <input class="form-control" type="text" />
+                              </div>
+                              <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>Search</button>
                             </div>
                         </div>
                     </div>
-              </form>
-        </form>
-</div>
-      </div>
-      </div>
+                </div>
+          </form>
+    </form>
+    </div>
+    </div>
+    </div>
 
-      <div class="container">
-          <h2 class="display-3" style="text-align:center;">Most Popular Classes</h2><br>
-            <div class="row">
-            {% for class in most_popular %}
-            <div class="col-md-4">
-                <h2>{{class.full_title}}</h2>
-                <p> {{class.description|slice:"0:500"|add:"..."}}</p>
-                <p><a class="btn btn-secondary" href="/class/{{class.course_id}}" role="button">View details &raquo;</a></p>
-            </div>
-            {% endfor %}
-            </div>
+<div class="container">
+  <h2 class="display-3" style="text-align:center;">Most Popular Classes</h2><br>
+    <div class="row">
+    {% for class in most_popular %}
+    <div class="col-md-4">
+        <h2>{{class.full_title}}</h2>
+        <p> {{class.description|slice:"0:500"|add:"..."}}</p>
+        <p><a class="btn btn-secondary" href="/class/{{class.course_id}}" role="button">View details &raquo;</a></p>
+    </div>
+    {% endfor %}
+    </div>
 
-          <hr>
+  <hr>
 
-      </div> <!-- /container -->
+</div> <!-- /container -->
 
-    </main>
+</main>
 
-    <footer class="container">
-      <p>&copy; Software Dev Team 3 (Because we only have 3 people *sob*</p>
-    </footer>
+<footer class="container">
+  <p>&copy; Software Dev Team 3 (Because we only have 3 people *sob*</p>
+</footer>
 
 
-<!--Fixes bug in -->
+<!--Fixes bug in dropdown menu-->
 <script>
     $('.dropdown-menu').click(function(e) {
         e.stopPropagation();
     });
 </script>
-
-
 
 
 {% endblock %}

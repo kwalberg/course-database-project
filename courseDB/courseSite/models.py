@@ -16,6 +16,7 @@ class Course(models.Model):
     instructor = models.CharField(max_length=150)
     days = models.CharField(max_length=5)
     times = models.CharField(max_length=20)
+    #percent_recommended = models.IntegerField(max_length=3)
     tags = TaggableManager()
 
     def __str__(self):
@@ -33,13 +34,17 @@ class Review(models.Model):
     has_book = models.IntegerField(null=True)
 
     def get_has_book(self):
-        if self.has_book == "0":
+        if self.has_book == 0:
             return "No"
-        else:
+        elif self.has_book == 1:
             return "Yes"
+        else:
+            return None
 
     def get_recommend(self):
-        if self.recommend == "0":
+        if self.recommend == 0:
             return "No"
-        else:
+        elif self.has_book == 1:
             return "Yes"
+        else:
+            return None

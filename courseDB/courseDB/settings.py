@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django_filters',
     'star_ratings',
     'taggit',
+    'django_tables2'
 ]
 
 MIDDLEWARE = [
