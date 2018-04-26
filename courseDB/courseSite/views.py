@@ -6,6 +6,7 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
 import datetime
+import random
 
 # Create your views here.
 
@@ -15,9 +16,10 @@ def getCatalog(request):
 
 
 def FrontPage(request):
-    most_popular = Course.objects.all()[0:3]
+    count = Course.objects.all().count()
+    slice = random.random() * (count - 3)
+    most_popular = Course.objects.all()[slice: slice+3]
     return render(request, 'FrontPage.html', {'most_popular': most_popular})
-
 
 def class_page(request, class_name):
     c = Course.objects.filter(course_id=class_name)[0]

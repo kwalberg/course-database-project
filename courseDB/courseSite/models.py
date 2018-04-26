@@ -32,6 +32,7 @@ class Review(models.Model):
     test_difficulty = models.IntegerField(null=True)
     recommend = models.IntegerField(null=True)
     has_book = models.IntegerField(null=True)
+    ratings = models.IntegerField(null=True)
 
     def get_has_book(self):
         if self.has_book == 0:

@@ -4,21 +4,21 @@
 <html>
 <head>
 <style>
-table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-}
+<!--table {-->
+    <!--font-family: arial, sans-serif;-->
+    <!--border-collapse: collapse;-->
+    <!--width: 100%;-->
+<!--}-->
 
-td, th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-}
+<!--td, th {-->
+    <!--border: 1px solid #dddddd;-->
+    <!--text-align: left;-->
+    <!--padding: 8px;-->
+<!--}-->
 
-tr:nth-child(even) {
-    background-color: #dddddd;
-}
+<!--tr:nth-child(even) {-->
+    <!--background-color: #dddddd;-->
+<!--}-->
 </style>
 </head>
 <body>
@@ -30,14 +30,16 @@ tr:nth-child(even) {
 
 
 
-
-<h2>Course List</h2>
-
-<table>
+<div class="table-responsive">
+<table class="table table-striped">
     <tr>
+        <thead class="thead-dark">
     <th>Class</th>
     <th>Instructor</th>
     <th>Class Title</th>
+     <th>Instructor</th>
+        <th>Times</th>
+    </thead>
   </tr>
 
   {% for course in class_list %}
@@ -45,12 +47,14 @@ tr:nth-child(even) {
         <th><a href="{% url 'class' course.course_id %}">{{course.course_id}}</a></th>
         <th>{{course.instructor}}</th>
         <th>{{course.full_title}}</th>
+        <th>{{course.instructor}}</th>
+        <th>{{course.times}}</th>
 
     </tr>
             {% endfor %}
 
 </table>
-
+<div/>
 </body>
 </html>
 
