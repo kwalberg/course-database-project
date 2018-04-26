@@ -65,13 +65,26 @@
 <div class="container">
   <h2 class="display-3" style="text-align:center;">Most Popular Classes</h2><br>
     <div class="row">
-    {% for class in most_popular %}
-    <div class="col-md-4">
-        <h2>{{class.full_title}}</h2>
-        <p> {{class.description|slice:"0:500"|add:"..."}}</p>
-        <p><a class="btn btn-secondary" href="/class/{{class.course_id}}" role="button">View details &raquo;</a></p>
-    </div>
-    {% endfor %}
+        {% for class in most_popular %}
+                 <div class="col">
+                    <div class="card bg-light mb-3">
+                          <div class="card-header">{{class.instructor}} | {{class.days}} | {{class.times}}</div>
+                   <div class="card-body">
+
+                        <h4 class="card-title">{{class.full_title}}</h4>
+                <p> {{class.description|slice:"0:700"|add:"..."}}</p>
+                <p><a class="btn btn-secondary" href="/class/{{class.course_id}}" role="button">View details &raquo;</a></p>
+            </div>
+                          </div>
+            </div>
+            {% endfor %}
+    <!--{% for class in most_popular %}-->
+    <!--<div class="col-md-4">-->
+        <!--<h2>{{class.full_title}}</h2>-->
+        <!--<p> {{class.description|slice:"0:500"|add:"..."}}</p>-->
+        <!--<p><a class="btn btn-secondary" href="/class/{{class.course_id}}" role="button">View details &raquo;</a></p>-->
+    <!--</div>-->
+    <!--{% endfor %}-->
     </div>
 
   <hr>
