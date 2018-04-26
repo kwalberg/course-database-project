@@ -12,11 +12,26 @@
 
     <!-- jQuery and jQuery UI are required dependencies. -->
     <!-- Although we use jQuery 1.4 here, it's tested with the latest too (1.8.3 as of writing this.) -->
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript" charset="utf-8"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+
+
     <script src= "{% static 'tagit/js/tag-it.js' %}" type="text/javascript"  charset="utf-8"></script>
     <script src= "{% static 'tagit/css/jquery.tagit.css' %}" type="text/javascript"  charset="utf-8"></script>
     <script src= "{% static 'tagit/css/tagit.ui-zendesk.css' %}" type="text/javascript"  charset="utf-8"></script>
+<!--<script src="{% static 'ratings/dist/themes/fontawesome-stars.css' %}"></script>-->
+    <link rel="stylesheet" href="{% static 'ratings/dist/themes/fontawesome-stars.css' %}">
+    <!--<link rel="stylesheet" href="{% static 'ratings/examples/css/normalize.min.css' %}">-->
+    <!--<link rel="stylesheet" href="{% static 'ratings/examples/css/css/main.css' %}">-->
+    <!--<link rel="stylesheet" href="{% static 'ratings/examples/css/examples.css' %}">-->
+    <!--<link rel="stylesheet" href="{% static 'ratings/dist/themes/bars-movie.css' %}">-->
+<script type="text/javascript">
+   $(function() {
+      $('#example').barrating({
+        theme: 'fontawesome-stars'
+      });
+   });
+</script>
+
 
     <script>
         $(function(){
@@ -260,6 +275,9 @@
     </div>
 
     <div class="row">
+        <!--stars-->
+
+
         <div class="col-sm-3"><p>Was a textbook required?</p></div>
         <div class="col">
             <div class="btn-group btn-group-toggle" data-toggle="buttons">
@@ -289,24 +307,7 @@
             </div>
         </div>
     </div>
-        <div class="row">
 
-        </div>
-
-     <div class="row">
-             <div class="wrapper">
-  <input type="checkbox" id="st1" value="1" />
-  <label for="st1"></label>
-  <input type="checkbox" id="st2" value="2" />
-  <label for="st2"></label>
-  <input type="checkbox" id="st3" value="3" />
-  <label for="st3"></label>
-  <input type="checkbox" id="st4" value="4" />
-  <label for="st4"></label>
-  <input type="checkbox" id="st5" value="5" />
-  <label for="st5"></label>
-</div>
-     </div>
 
     <div class="form-group">
         <label for="comment">Submit a Comment:</label>
@@ -314,8 +315,6 @@
     </div>
  <label for="eventtags">Tags</label>
                  <ul id="eventTags">
-                <li>Click my label</li>
-                <li>Remove me</li>
             </ul>
 
 
