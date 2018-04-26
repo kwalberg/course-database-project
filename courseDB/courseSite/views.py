@@ -27,7 +27,7 @@ def class_page(request, class_name):
     for review in review_list:
         if review.recommend is not None:
             recommended_percent += review.recommend
-    recommended_percent = int(round(recommended_percent*100/len(review_list),-1))
+            recommended_percent = int(round(recommended_percent*100/len(review_list),-1))
     return render(request, 'classPage.html', {'course': course, 'review_list': review_list,
                                               'percent_recommend': recommended_percent})
 

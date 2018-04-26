@@ -1,6 +1,116 @@
 {% extends "public/base.html" %}
-
+{% load static %}
 {% block content %}
+<head>
+    <meta charset="utf-8">
+    <title>Tag-it! Example</title>
+
+    <!-- These few CSS files are just to make this example page look nice. You can ignore them. -->
+        <!--<link href={% static "css/jquery.tagit.css" %} rel="stylesheet" type="text/css">-->
+    <!--<link href={% static "css/tagit.ui-zendesk.css" %} rel="stylesheet" type="text/css">-->
+     <!--   <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/flick/jquery-ui.css"> -->
+
+    <!-- jQuery and jQuery UI are required dependencies. -->
+    <!-- Although we use jQuery 1.4 here, it's tested with the latest too (1.8.3 as of writing this.) -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src= "{% static 'tagit/js/tag-it.js' %}" type="text/javascript"  charset="utf-8"></script>
+    <script src= "{% static 'tagit/css/jquery.tagit.css' %}" type="text/javascript"  charset="utf-8"></script>
+    <script src= "{% static 'tagit/css/tagit.ui-zendesk.css' %}" type="text/javascript"  charset="utf-8"></script>
+
+    <script>
+        $(function(){
+            var sampleTags = ['c++', 'java', 'php', 'coldfusion', 'javascript', 'asp', 'ruby', 'python', 'c', 'scala', 'groovy', 'haskell', 'perl', 'erlang', 'apl', 'cobol', 'go', 'lua'];
+            //-------------------------------
+            // Minimal
+            //-------------------------------
+            $('#myTags').tagit();
+            //-------------------------------
+            // Single field
+            //-------------------------------
+            $('#singleFieldTags').tagit({
+                availableTags: sampleTags,
+                // This will make Tag-it submit a single form value, as a comma-delimited field.
+                singleField: true,
+                singleFieldNode: $('#mySingleField')
+            });
+            // singleFieldTags2 is an INPUT element, rather than a UL as in the other
+            // examples, so it automatically defaults to singleField.
+            $('#singleFieldTags2').tagit({
+                availableTags: sampleTags
+            });
+            //-------------------------------
+            // Preloading data in markup
+            //-------------------------------
+            $('#myULTags').tagit({
+                availableTags: sampleTags, // this param is of course optional. it's for autocomplete.
+                // configure the name of the input field (will be submitted with form), default: item[tags]
+                itemName: 'item',
+                fieldName: 'tags'
+            });
+            //-------------------------------
+            // Tag events
+            //-------------------------------
+            var eventTags = $('#eventTags');
+            var addEvent = function(text) {
+                $('#events_container').append(text + '<br>');
+            };
+            eventTags.tagit({
+                availableTags: sampleTags,
+                beforeTagAdded: function(evt, ui) {
+                    if (!ui.duringInitialization) {
+                        addEvent('beforeTagAdded: ' + eventTags.tagit('tagLabel', ui.tag));
+                    }
+                },
+                afterTagAdded: function(evt, ui) {
+                    if (!ui.duringInitialization) {
+                        addEvent('afterTagAdded: ' + eventTags.tagit('tagLabel', ui.tag));
+                    }
+                },
+                beforeTagRemoved: function(evt, ui) {
+                    addEvent('beforeTagRemoved: ' + eventTags.tagit('tagLabel', ui.tag));
+                },
+                afterTagRemoved: function(evt, ui) {
+                    addEvent('afterTagRemoved: ' + eventTags.tagit('tagLabel', ui.tag));
+                },
+                onTagClicked: function(evt, ui) {
+                    addEvent('onTagClicked: ' + eventTags.tagit('tagLabel', ui.tag));
+                },
+                onTagExists: function(evt, ui) {
+                    addEvent('onTagExists: ' + eventTags.tagit('tagLabel', ui.existingTag));
+                }
+            });
+            //-------------------------------
+            // Read-only
+            //-------------------------------
+            $('#readOnlyTags').tagit({
+                readOnly: true
+            });
+            //-------------------------------
+            // Tag-it methods
+            //-------------------------------
+            $('#methodTags').tagit({
+                availableTags: sampleTags
+            });
+            //-------------------------------
+            // Allow spaces without quotes.
+            //-------------------------------
+            $('#allowSpacesTags').tagit({
+                availableTags: sampleTags,
+                allowSpaces: true
+            });
+            //-------------------------------
+            // Remove confirmation
+            //-------------------------------
+            $('#removeConfirmationTags').tagit({
+                availableTags: sampleTags,
+                removeConfirmation: true
+            });
+
+        });
+    </script>
+</head>
+
 <style>
 .content {
   text-align: center;
@@ -92,9 +202,11 @@
 <div class="container">
     <h2>Submit a Rating for {{course.course_id}}</h2><br><br>
 
+
     <h3>How does this class compare to others in the following categories?</h3>
     <form action="/submit_review/{{course.course_id}}/" method="post">
     <div class="row">
+
         <div class="col-sm-3"><p>General Workload:&nbsp;</p></div>
         <div class="col">
             <span>Very Light</span>
@@ -163,6 +275,7 @@
     </div>
 
     <div class="row">
+
         <div class="col-sm-3"><p>Would you recommend this course to a friend?</p></div>
         <div class="col">
             <div class="btn-group btn-group-toggle" data-toggle="buttons">
@@ -176,6 +289,9 @@
             </div>
         </div>
     </div>
+        <div class="row">
+
+        </div>
 
      <div class="row">
              <div class="wrapper">
@@ -196,6 +312,11 @@
         <label for="comment">Submit a Comment:</label>
         <textarea class="form-control" name="comment" rows="5" id="comment"></textarea>
     </div>
+ <label for="eventtags">Tags</label>
+                 <ul id="eventTags">
+                <li>Click my label</li>
+                <li>Remove me</li>
+            </ul>
 
 
 
@@ -203,6 +324,9 @@
     <button type="submit" class="btn btn-default">Submit Review</button>
     </form>
 </div>
+
+
+
 
 
 
