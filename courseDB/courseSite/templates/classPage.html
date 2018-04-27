@@ -347,13 +347,16 @@ Due to the split circle of progress-left and progress right, we must use the ani
             <div class="row">
                 <div class="col-sm-3">
                     <div class="class-overall-rating">
-                        <h2>4.0</h2>
+                        <h2>{{rating}}</h2>
                         <div class ="stars">
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
+                            <!-- Makes selected stars for each point in the rating, then adds unselected stars to fill up to 5 -->
+                            {% for i in range_l %}
+                                <span class="fa fa-star checked"></span>
+                            {% endfor %}
+
+                            {% for i in range_u %}
+                                <span class="fa fa-star"></span>
+                            {% endfor %}
                             <div style="clear:both;"></div>
                         </div>
                         <p><i class="fa fa-user" aria-hidden="true"></i> 16 total</p>
@@ -419,29 +422,46 @@ Due to the split circle of progress-left and progress right, we must use the ani
     <div class="row">
         <div class="col-sm-12">
             <hr>
-            <h1>Reviews</h1>
+            <div class="row">
+                <div class="col-sm-4">
+                    <h3>Ratings</h3>
+                </div>
+                <div class="col-sm-5">
+                    <h3>Comments</h3>
+                </div>
+                <div class="col-sm-3">
+                    <h3>Tags</h3>
+                </div>
+            </div>
 				<div class="review-block">
                 {% if review_list %}
                     {% for review in review_list %}
-                    <div class="row">
-                        <div class="col-sm-3">
-                            <div class="review-block-name"><a href="#">{{review.author}}</a></div>
-                            Workload: {{review.workload}}<br>
-                            Difficulty: {{review.test_difficulty}}<br>
-                            Textbook Required: {{review.get_has_book}}<br>
-                            Recommended: {{review.get_recommend}}<br>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="review-block-date">Posted {{review.pub_date}}</div>
-                            <div class="review-block-description">{{review.text}}</div>
-                        </div>
-                        <div class="col-sm-4">
-                            Tags:<br>
+                    <div class="card">
+                      <div class="card-header">
+                          Posted <b>{{review.simple_date}}</b> by <b>{{review.author}}</b>
+                      </div>
+                      <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div></div>
+                                <b>Workload:</b> {{review.workload}}<br>
+                                <b>Difficulty:</b> {{review.test_difficulty}}<br>
+                                <b>Textbook Required:</b> {{review.get_has_book}}<br>
+                                <b>Recommended:</b> {{review.get_recommend}}<br>
+                            </div>
+                            <div class="col-sm-5">
+                                {{review.text}}
+                            </div>
 
-                        </div>
+                            <div class="col-sm-3">
+
+                            </div>
+                    </div>
+                      </div>
                     </div>
                     <hr>
                     {% endfor %}
+
                 {% else %}
                     <a href="/rate/{{course}}">Be the first to submit a review!</a>
                 {% endif %}

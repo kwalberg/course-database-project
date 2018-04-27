@@ -1,7 +1,5 @@
-from django.shortcuts import render
 from .models import Course, Review
 from django.db.models import Q
-from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
@@ -27,14 +25,28 @@ def class_page(request, class_name):
     course = Course.objects.filter(course_id=class_name)[0]
     if len(review_list) == 0:
         recommended_percent = 0
+        overall_rating = 0
     else:
         recommended_percent = 0
         for review in review_list:
             if review.recommend is not None:
                 recommended_percent += review.recommend
         recommended_percent = int(round(recommended_percent*100/len(review_list),-1))
+
+        overall_rating = 0
+        total_ratings = 0
+        for review in review_list:
+            if review.ratings is not None:
+                overall_rating += review.ratings
+                total_ratings += 1
+        if total_ratings != 0:
+            overall_rating = int(round(overall_rating / total_ratings, -1))
+        else:
+            overall_rating = 0
+
     return render(request, 'classPage.html', {'course': course, 'review_list': review_list,
-                                              'percent_recommend': recommended_percent})
+                                              'percent_recommend': recommended_percent, 'rating': overall_rating,
+                                              'range': range(0,overall_rating), 'range_u': range(overall_rating, 5)})
 
 
 def search_results(request):
@@ -70,6 +82,7 @@ def retrieveDepartment(request):
 
     return entries
 
+
 def advanced_results(request):
     query = request.POST.get("query", "")
     value = request.POST.get("category", "")
@@ -83,16 +96,22 @@ def advanced_results(request):
     return render(request, 'searchResults.html', {'query': query, 'class_list': class_list})
 
 
-
 def submit_review(request,class_name):
-    workload = request.POST.get("time")
-    diff = request.POST.get("diff")
-    has_book = request.POST.get("book")
-    recommend = request.POST.get("recommend")
-    comment = request.POST.get("comment")
     c = Course.objects.filter(course_id=class_name)[0]
-    Review.objects.create(course=c, text=comment, author=request.user, pub_date=datetime.datetime.now(), has_book = has_book, workload = workload, test_difficulty=diff, recommend=recommend)
-    return redirect(class_page, permanent=True, class_name = class_name)
+    # Create new review based on POST parameters
+    Review.objects.create(course=c,
+                          text=request.POST.get("comment"),
+                          author=request.user,
+                          pub_date=datetime.datetime.now(),
+                          liked_teaching=request.POST.get("teaching"),
+                          attendance=request.POST.get("attend"),
+                          has_book=request.POST.get("book"),
+                          workload=request.POST.get("time"),
+                          test_difficulty=request.POST.get("diff"),
+                          recommend=request.POST.get("recommend"),
+                          ratings=request.POST.get("rating"))
+    return redirect(class_page, permanent=True, class_name=class_name)
+
 
 def rate_course(request, class_name):
     if request.user.is_authenticated:
@@ -100,6 +119,7 @@ def rate_course(request, class_name):
         return render(request, 'ratingInterface.html', {'name':class_name, 'course': course})
     else:
         return redirect(f"/login/?next={request.path}")
+
 
 def signup(request):
     if request.method == 'POST':

@@ -216,22 +216,21 @@
 .wrapper label:hover:before {
   color: #FFC107;
 }
+
+.btn .btn-secondary{
+    background-color: #8064A2;
+}
 </style>
 <div class="container">
     <div class="submit">
         <h2>Submit a Rating for {{course.course_id}}</h2><br><br>
     </div>
-
-
-    <h3>How does this class compare to others in the following categories?</h3>
     <form action="/submit_review/{{course.course_id}}/" method="post">
     <div class="row">
-
         <div class="col-sm-3"><p>General Workload (Hours):&nbsp;</p></div>
         <div class="col">
             <span>Very Light</span>
             <div class="btn-group btn-group-toggle" data-toggle="buttons">
-
                 <label class="btn btn-secondary">
                     <input type="radio" name="time" value="1" autocomplete="off"> 1-3
                 </label>
@@ -286,19 +285,19 @@
             <div class="btn-group btn-group-toggle" data-toggle="buttons">
 
                 <label class="btn btn-secondary">
-                    <input type="radio" name="diff" value="1" autocomplete="off"> 1
+                    <input type="radio" name="attend" value="1" autocomplete="off"> 1
                 </label>
                 <label class="btn btn-secondary">
-                    <input type="radio" name="diff" value = "2" autocomplete="off"> 2
+                    <input type="radio" name="attend" value = "2" autocomplete="off"> 2
                 </label>
                 <label class="btn btn-secondary">
-                    <input type="radio" name="diff" value = "3" autocomplete="off"> 3
+                    <input type="radio" name="attend" value = "3" autocomplete="off"> 3
                 </label>
                 <label class="btn btn-secondary">
-                    <input type="radio" name="diff" value = "4" autocomplete="off"> 4
+                    <input type="radio" name="attend" value = "4" autocomplete="off"> 4
                 </label>
                 <label class="btn btn-secondary">
-                    <input type="radio" name="diff" value = "5" autocomplete="off"> 5
+                    <input type="radio" name="attend" value = "5" autocomplete="off"> 5
                 </label>
             </div>
             <span>Attend Every Class!</span>
@@ -348,10 +347,10 @@
             <div class="btn-group btn-group-toggle" data-toggle="buttons">
 
                 <label class="btn btn-secondary">
-                    <input type="radio" name="recommend" value = "1" autocomplete="off"> Yes
+                    <input type="radio" name="teaching" value = "1" autocomplete="off"> Yes
                 </label>
                 <label class="btn btn-secondary">
-                    <input type="radio" name="recommend" value = "0" autocomplete="off"> Nope
+                    <input type="radio" name="teaching" value = "0" autocomplete="off"> Nope
                 </label>
             </div>
         </div>
@@ -366,19 +365,19 @@
             <div class="btn-group btn-group-toggle" data-toggle="buttons">
 
                 <label class="btn btn-secondary">
-                    <input type="radio" name="diff" value="1" autocomplete="off"> 1
+                    <input type="radio" name="rating" value="1" autocomplete="off"> 1
                 </label>
                 <label class="btn btn-secondary">
-                    <input type="radio" name="diff" value = "2" autocomplete="off"> 2
+                    <input type="radio" name="rating" value = "2" autocomplete="off"> 2
                 </label>
                 <label class="btn btn-secondary">
-                    <input type="radio" name="diff" value = "3" autocomplete="off"> 3
+                    <input type="radio" name="rating" value = "3" autocomplete="off"> 3
                 </label>
                 <label class="btn btn-secondary">
-                    <input type="radio" name="diff" value = "4" autocomplete="off"> 4
+                    <input type="radio" name="rating" value = "4" autocomplete="off"> 4
                 </label>
                 <label class="btn btn-secondary">
-                    <input type="radio" name="diff" value = "5" autocomplete="off"> 5
+                    <input type="radio" name="rating" value = "5" autocomplete="off"> 5
                 </label>
             </div>
             <span>Loved it :)</span>
