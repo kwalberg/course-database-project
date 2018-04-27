@@ -26,7 +26,7 @@
                     {% csrf_token %}
                   </div>
                   <button type="submit" class="btn btn-primary">Search</button>
-              </div>
+             </div>
                 <div class="btn-group"  role="group">
                     <div class="dropdown">
                         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span>Advanced</button>
@@ -72,10 +72,9 @@
                    <div class="card-body">
 
                         <h4 class="card-title">{{class.full_title}}</h4>
-                <p> {{class.description|slice:"0:700"|add:"..."}}</p>
+                <p> {{class.description|safe|slice:"0:700"|add:"..."}}</p>
                 <p><a class="btn btn-secondary" href="/class/{{class.course_id}}" role="button">View details &raquo;</a></p>
-            </div>
-                          </div>
+            </div></div>
             </div>
             {% endfor %}
     <!--{% for class in most_popular %}-->

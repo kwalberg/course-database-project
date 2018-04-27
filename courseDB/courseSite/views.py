@@ -10,7 +10,6 @@ import random
 
 # Create your views here.
 
-#
 def getCatalog(request):
     return render(request,'Catalog.html', {'class_list': Course.objects.all()})
 
@@ -21,22 +20,25 @@ def FrontPage(request):
     most_popular = Course.objects.all()[slice: slice+3]
     return render(request, 'FrontPage.html', {'most_popular': most_popular})
 
+
 def class_page(request, class_name):
     c = Course.objects.filter(course_id=class_name)[0]
     review_list = Review.objects.filter(course=c)[::-1]
     course = Course.objects.filter(course_id=class_name)[0]
-    recommended_percent = 0
-    for review in review_list:
-        if review.recommend is not None:
-            recommended_percent += review.recommend
-    recommended_percent = int(round(recommended_percent*100/len(review_list),-1))
+    if len(review_list) == 0:
+        recommended_percent = 0
+    else:
+        recommended_percent = 0
+        for review in review_list:
+            if review.recommend is not None:
+                recommended_percent += review.recommend
+        recommended_percent = int(round(recommended_percent*100/len(review_list),-1))
     return render(request, 'classPage.html', {'course': course, 'review_list': review_list,
                                               'percent_recommend': recommended_percent})
 
 
 def search_results(request):
     query = request.POST.get("query", "")
-    category = request.POST.get("category")
     class_list = retrieveObjects(request)
     return render(request, 'searchResults.html', {'query': query, 'class_list': class_list})
 

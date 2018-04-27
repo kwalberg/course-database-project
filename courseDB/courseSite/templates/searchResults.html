@@ -9,14 +9,16 @@
           <div class="col-sm-8">
           <h4>Your search for "{{query}}" returned {{ class_list|length }} results.</h4><br>
               {% for class in class_list %}
-              <div class="panel panel-default">
-                  <div class="panel-body">
-                      <a href="{% url 'class' class %}" class="text-left">{{class.course_id}}</a>
-                      <a href="{% url 'class' class %}">{{class.full_title}}</a>
-                      <a href="{% url 'class' class %}">{{class.instructor}}</a>
+              <a href="{% url 'class' class %}">
+                  <div class="card">
+                      <div class="card-body">
+                          <span><h4>{{class.course_id}}:&nbsp;{{class.full_title}}</h4></span>
+                          <div>{{class.instructor}} | {{class.days}} | {{class.times}}</div>
+                          <h4 class="card-title"></h4>
+                      </div>
                   </div>
-              </div>
-              <hr>
+              </a>
+              <br>
               {% endfor %}
           </div>
 
