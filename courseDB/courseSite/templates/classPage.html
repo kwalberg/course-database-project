@@ -366,13 +366,13 @@ Due to the split circle of progress-left and progress right, we must use the ani
                     <div class="col-sm-3">
                         <div class="difficulty-rating">
                             <h3>Difficulty</h3>
-                            <h3>3.5</h3>
+                            <h3>{{difficulty}}</h3>
                         </div>
                     </div>
                     <div class="col-sm-3">
                         <div class="HwTime">
-                            <h3>Time Spent on HW</h3>
-                            <h3>5</h3>
+                            <h3>Workload</h3>
+                            <h3>{{workload}} hrs/week</h3>
                         </div>
                     </div>
 
@@ -403,7 +403,7 @@ Due to the split circle of progress-left and progress right, we must use the ani
                 <p> Recommend to a Friend</p>
             </div>
             <div class="col-md-4 col-sm-6">
-                <div class="progress" data-percentage="{{percent_recommend}}">
+                <div class="progress" data-percentage="{{percent_enjoyed_teaching}}">
                 <span class="progress-left">
                     <span class="progress-bar"></span>
                 </span>
@@ -411,7 +411,7 @@ Due to the split circle of progress-left and progress right, we must use the ani
                     <span class="progress-bar"></span>
                 </span>
                 <div class="progress-value">
-                    {{percent_recommend}}%
+                    {{percent_enjoyed_teaching}}%
                 </div>
                 </div>
                 <p style="text-align:center;"> Enjoyed Teaching Style</p>
