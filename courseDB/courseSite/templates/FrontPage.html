@@ -63,7 +63,7 @@
     </div>
 
 <div class="container">
-  <h2 class="display-3" style="text-align:center;">Most Popular Classes</h2><br>
+  <h2 class="display-3" style="text-align:center;">Featured Courses</h2><br>
     <div class="row">
         {% for class in most_popular %}
                  <div class="col">
@@ -72,7 +72,8 @@
                    <div class="card-body">
 
                         <h4 class="card-title">{{class.full_title}}</h4>
-                <p> {{class.description|safe|slice:"0:700"|add:"..."}}</p>
+                <!--<p> {{class.description|safe|slice:"0:600"|add:"..."}}</p>-->
+                       <p>{{class.description}}</p>
                 <p><a class="btn btn-secondary" href="/class/{{class.course_id}}" role="button">View details &raquo;</a></p>
             </div></div>
             </div>
@@ -93,7 +94,7 @@
 </main>
 
 <footer class="container">
-  <p>&copy; Software Dev Team 3 (Because we only have 3 people *sob*</p>
+  <p> Software Dev Team 3 (Because we only have 3 people *sob*)</p>
 </footer>
 
 

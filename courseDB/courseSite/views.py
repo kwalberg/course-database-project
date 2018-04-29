@@ -61,6 +61,8 @@ def class_page(request, class_name):
         overall_rating = int(round(overall_rating / num_ratings))
 
     difficulty = 0
+    # average_difficulty = 0
+    # average_workload = 0
     num_diff_rated = len([review.test_difficulty is not None for review in review_list])
     for review in review_list:
         if review.test_difficulty is not None:
