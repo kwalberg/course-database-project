@@ -21,19 +21,20 @@
         <div class="col-sm-2 sidenav">
 
         </div>
-        <div class="col-sm-8 text-left">
-          <h1>{{course.full_title}}</h1> &emsp; &emsp;
-              <a align = "right" href="/rate/{{course}}">Submit a Rating</a>
-            <form method="get" action="/rate/{{course}}">
- <button type="button" class="btn btn-raised btn-success">Submit a
-                Rating</button>
-</form>
+        <div class="col-sm-8 text-center">
+            <h1 class="display-2">{{course.full_title}}</h1>
 
 
-          <p>{{course.description}}</p>
+
+
+          <!--<p class="lead">{{course.description}}</p>-->
+            <blockquote class="blockquote text-left">{{course.description}}</blockquote>
+            <button type="button" class="btn btn-raised btn-success">
+  <a href="/rate/{{course}}" style="color:inherit"> Submit a rating </a>
+</button>
           <hr>
 
-          <h2>Overview</h2>
+         <h1 class="display-3">Details</h1>
             <div class="row">
                 <div class="col-sm-6">
                     <label>Instructor:</label>
@@ -56,7 +57,7 @@
             </div>
 
             <div class="rating-card">
-            <div><h1>Summary</h1></div>
+                <h1 class="display-3">Summary</h1>
 
             <div class="row">
                 <div class="col-sm-3">
