@@ -1,4 +1,4 @@
-## Feedmereadmes: A README help exchange
+## Classy: A Course Catalog Web App
 
 This project originated during a conversation at FOSDEM 2017 between folks at RedHat and Zalando. It's here to serve:
 - **project authors** looking for README feedback and help. Add the link to your project README via this repository's Issues tracker. You'll receive a thorough README edit and feedback to help you sharpen your project's "why," "how," and "what." We apply [Zalando's product analysis template](https://github.com/zalando/zalando-howto-open-source/blob/master/producttemplate.md) and other resources for this. :)
@@ -13,9 +13,16 @@ This project originated during a conversation at FOSDEM 2017 between folks at Re
 - "Great opportunity for #writers to contribute to FOSS!" – [Ivana Isadora Devcic](https://twitter.com/ivana_isadora/status/858416934836215810), KDE Community
 - "A truly excellent service to the community." – Jerod Santo, [The Changelog](https://changelog.com/podcast)
 
-### Inspiration List
+### Technologies Used
 
-[Go here](Inspiration.md) for relevant articles, talks, and projects that we find inspiring. Add your own favorites via pull request.
+Django
+HTML5
+Bootstrap 4
+JQuery
+React.js
+MySQL
+
+
 
 ### Why We're Doing This
 

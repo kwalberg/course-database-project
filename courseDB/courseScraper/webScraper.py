@@ -6,7 +6,7 @@ cnx = MySQLdb.connect(user='root', password='password',
 
 cursor = cnx.cursor()
 
-response = requests.get("https://www.macalester.edu/registrar/schedules/2018spring/class-schedule/")
+response = requests.get("https://www.macalester.edu/registrar/schedules/2018fall/class-schedule/")
 page_source = response.text.encode('latin-1','ignore').decode('latin-1')
 
 course_list_html = re.search('<div class="class-schedule-wrapper">(.*)</div><!-- .class-schedule-wrapper -->', page_source, flags=re.DOTALL).group(1)
