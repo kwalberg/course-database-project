@@ -9,302 +9,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title> {{course.full_title}} </title>
 
 
-  <style>
-
-  /* Remove the navbar's default margin-bottom and rounded borders */
-
-
-    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
-    .row.content {height: 3001px}
-
-    /* Set gray background color and 100% height */
-    .sidenav {
-      padding-top: 40px;
-      background-color: #f1f1f1;
-      height: 100%;
-    }
-
-    .col-sm-8 {
-        padding-top: 30px;
-    }
-    .nowrap{
-        white-space: nowrap;
-    }
-
-
-
-    /* On small screens, set height to 'auto' for sidenav and grid */
-    @media screen and (max-width: 767px) {
-      .sidenav {
-        height: auto;
-        padding: 15px;
-      }
-      .row.content {height:auto;}
-    }
-
-    .rating-card{
-	padding:10px;
-	background-color:#F5F5F5;
-	width:100%;
-	border-radius:10px;
-	text-align: center;
-	margin: 0 auto;
-	margin-top:30px;
-	box-shadow: 2px 2px 18px -2px #337AB7;
-}
-
-.checked {
-    color: orange;
-}
-.fa-star{
-    width: 15px;
-}
-.rating-card h1{
-	color:#372049;
-	margin-bottom:30px;
-}
-.class-overall-rating{
-	width: 100%;
-	float:left;
-    padding-bottom: 20px;
-    padding-left: 100px;
-}
-.class-overall-rating p{
-	margin-top:10px;
-	font-size: 20px;
-
-}
-.class-overall-rating h2{
-	margin:0px;
-	font-size:60px;
-	font-weight: normal;
-}
-.rating-process{
-	width: 50%;
-	text-align: left;
-	float:right;
-}
-.rating-right-part{
-	margin-bottom:3px;
-    margin-right: 4px;
-}
-.rating-right-part p{
-	margin:0px;
-}
-.difficulty-rating{
-
-}
-
-
-.progress {
-  width: 150px;
-  height: 150px;
-  line-height: 150px;
-  background: none;
-  margin: 0 auto;
-  box-shadow: none;
-  position: relative;
-}
-.progress:after {
-  content: "";
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  border: 7px solid #eee;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-.progress > span {
-  width: 50%;
-  height: 100%;
-  overflow: hidden;
-  position: absolute;
-  top: 0;
-  z-index: 1;
-}
-.progress .progress-left {
-  left: 0;
-}
-.progress .progress-bar {
-  width: 100%;
-  height: 100%;
-  background: none;
-  border-width: 7px;
-  border-style: solid;
-  position: absolute;
-  top: 0;
-  border-color: #ffb43e;
-}
-.progress .progress-left .progress-bar {
-  left: 100%;
-  border-top-right-radius: 75px;
-  border-bottom-right-radius: 75px;
-  border-left: 0;
-  -webkit-transform-origin: center left;
-  transform-origin: center left;
-}
-.progress .progress-right {
-  right: 0;
-}
-.progress .progress-right .progress-bar {
-  left: -100%;
-  border-top-left-radius: 75px;
-  border-bottom-left-radius: 75px;
-  border-right: 0;
-  -webkit-transform-origin: center right;
-  transform-origin: center right;
-}
-.progress .progress-value {
-  display: flex;
-  border-radius: 50%;
-  font-size: 36px;
-  text-align: center;
-  line-height: 20px;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  font-weight: 300;
-  position: static;
-  margin: auto;
-}
-.progress .progress-value div {
-  margin-top: 10px;
-}
-.progress .progress-value span {
-  font-size: 12px;
-  text-transform: uppercase;
-}
-
-/* This for loop creates the    necessary css animation names
-Due to the split circle of progress-left and progress right, we must use the animations on each side.
-*/
-.progress[data-percentage="10"] .progress-right .progress-bar {
-  animation: loading-1 1.5s linear forwards;
-}
-.progress[data-percentage="10"] .progress-left .progress-bar {
-  animation: 0;
-}
-
-.progress[data-percentage="20"] .progress-right .progress-bar {
-  animation: loading-2 1.5s linear forwards;
-}
-.progress[data-percentage="20"] .progress-left .progress-bar {
-  animation: 0;
-}
-
-.progress[data-percentage="30"] .progress-right .progress-bar {
-  animation: loading-3 1.5s linear forwards;
-}
-.progress[data-percentage="30"] .progress-left .progress-bar {
-  animation: 0;
-}
-
-.progress[data-percentage="40"] .progress-right .progress-bar {
-  animation: loading-4 1.5s linear forwards;
-}
-.progress[data-percentage="40"] .progress-left .progress-bar {
-  animation: 0;
-}
-
-.progress[data-percentage="50"] .progress-right .progress-bar {
-  animation: loading-5 1.5s linear forwards;
-}
-.progress[data-percentage="50"] .progress-left .progress-bar {
-  animation: 0;
-}
-
-.progress[data-percentage="60"] .progress-right .progress-bar {
-  animation: loading-5 1.5s linear forwards;
-}
-.progress[data-percentage="60"] .progress-left .progress-bar {
-  animation: loading-1 1.5s linear forwards 1.5s;
-}
-
-.progress[data-percentage="70"] .progress-right .progress-bar {
-  animation: loading-5 1.5s linear forwards;
-}
-.progress[data-percentage="70"] .progress-left .progress-bar {
-  animation: loading-2 1.5s linear forwards 1.5s;
-}
-
-.progress[data-percentage="80"] .progress-right .progress-bar {
-  animation: loading-5 1.5s linear forwards;
-}
-.progress[data-percentage="80"] .progress-left .progress-bar {
-  animation: loading-3 1.5s linear forwards 1.5s;
-}
-
-.progress[data-percentage="90"] .progress-right .progress-bar {
-  animation: loading-5 1.5s linear forwards;
-}
-.progress[data-percentage="90"] .progress-left .progress-bar {
-  animation: loading-4 1.5s linear forwards 1.5s;
-}
-
-.progress[data-percentage="100"] .progress-right .progress-bar {
-  animation: loading-5 1.5s linear forwards;
-}
-.progress[data-percentage="100"] .progress-left .progress-bar {
-  animation: loading-5 1.5s linear forwards 1.5s;
-}
-
-@keyframes loading-1 {
-  0% {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-  100% {
-    -webkit-transform: rotate(36);
-    transform: rotate(36deg);
-  }
-}
-@keyframes loading-2 {
-  0% {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-  100% {
-    -webkit-transform: rotate(72);
-    transform: rotate(72deg);
-  }
-}
-@keyframes loading-3 {
-  0% {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-  100% {
-    -webkit-transform: rotate(108);
-    transform: rotate(108deg);
-  }
-}
-@keyframes loading-4 {
-  0% {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-  100% {
-    -webkit-transform: rotate(144);
-    transform: rotate(144deg);
-  }
-}
-@keyframes loading-5 {
-  0% {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-  100% {
-    -webkit-transform: rotate(180);
-    transform: rotate(180deg);
-  }
-}
-.progress {
-  margin-bottom: 1em;
-}
-  </style>
 </head>
 
 <body>
@@ -315,7 +22,14 @@ Due to the split circle of progress-left and progress right, we must use the ani
 
         </div>
         <div class="col-sm-8 text-left">
-          <h1>{{course.full_title}} &emsp; &emsp;  <a align = "right" href="/rate/{{course}}">Submit a Rating</a></h1>
+          <h1>{{course.full_title}}</h1> &emsp; &emsp;
+              <a align = "right" href="/rate/{{course}}">Submit a Rating</a>
+            <form method="get" action="/rate/{{course}}">
+ <button type="button" class="btn btn-raised btn-success">Submit a
+                Rating</button>
+</form>
+
+
           <p>{{course.description}}</p>
           <hr>
 
@@ -475,5 +189,303 @@ Due to the split circle of progress-left and progress right, we must use the ani
 </div>
 </body>
 </html>
+
+
+
+<!--For CSS Progress Bar (ew it's messy)-->
+ <style>
+
+  /* Remove the navbar's default margin-bottom and rounded borders */
+
+
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 3001px}
+
+    /* Set gray background color and 100% height */
+    .sidenav {
+      padding-top: 40px;
+      background-color: #f1f1f1;
+      height: 100%;
+    }
+
+    .col-sm-8 {
+        padding-top: 30px;
+    }
+    .nowrap{
+        white-space: nowrap;
+    }
+
+
+
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height:auto;}
+    }
+
+    .rating-card{
+	padding:10px;
+	background-color:#F5F5F5;
+	width:100%;
+	border-radius:10px;
+	text-align: center;
+	margin: 0 auto;
+	margin-top:30px;
+	box-shadow: 1px 1px 2px -2px #337AB7;
+}
+
+.checked {
+    color: orange;
+}
+.fa-star{
+    width: 15px;
+}
+.rating-card h1{
+	color:#372049;
+	margin-bottom:30px;
+}
+.class-overall-rating{
+	width: 100%;
+	float:left;
+    padding-bottom: 20px;
+    padding-left: 100px;
+}
+.class-overall-rating p{
+	margin-top:10px;
+	font-size: 20px;
+
+}
+.class-overall-rating h2{
+	margin:0px;
+	font-size:60px;
+	font-weight: normal;
+}
+.rating-process{
+	width: 50%;
+	text-align: left;
+	float:right;
+}
+.rating-right-part{
+	margin-bottom:3px;
+    margin-right: 4px;
+}
+.rating-right-part p{
+	margin:0px;
+}
+.difficulty-rating{
+
+}
+
+
+.progress {
+  width: 150px;
+  height: 150px;
+  line-height: 150px;
+  background: none;
+  margin: 0 auto;
+  box-shadow: none;
+  position: relative;
+}
+.progress:after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 7px solid #eee;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.progress > span {
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  z-index: 1;
+}
+.progress .progress-left {
+  left: 0;
+}
+.progress .progress-bar {
+  width: 100%;
+  height: 100%;
+  background: none;
+  border-width: 7px;
+  border-style: solid;
+  position: absolute;
+  top: 0;
+  border-color: #ffb43e;
+}
+.progress .progress-left .progress-bar {
+  left: 100%;
+  border-top-right-radius: 75px;
+  border-bottom-right-radius: 75px;
+  border-left: 0;
+  -webkit-transform-origin: center left;
+  transform-origin: center left;
+}
+.progress .progress-right {
+  right: 0;
+}
+.progress .progress-right .progress-bar {
+  left: -100%;
+  border-top-left-radius: 75px;
+  border-bottom-left-radius: 75px;
+  border-right: 0;
+  -webkit-transform-origin: center right;
+  transform-origin: center right;
+}
+.progress .progress-value {
+  display: flex;
+  border-radius: 50%;
+  font-size: 36px;
+  text-align: center;
+  line-height: 20px;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  font-weight: 300;
+  position: static;
+  margin: auto;
+}
+.progress .progress-value div {
+  margin-top: 10px;
+}
+.progress .progress-value span {
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+/* This for loop creates the    necessary css animation names
+Due to the split circle of progress-left and progress right, we must use the animations on each side.
+*/
+.progress[data-percentage="10"] .progress-right .progress-bar {
+  animation: loading-1 .5s linear forwards;
+}
+.progress[data-percentage="10"] .progress-left .progress-bar {
+  animation: 0;
+}
+
+.progress[data-percentage="20"] .progress-right .progress-bar {
+  animation: loading-2 .5s linear forwards;
+}
+.progress[data-percentage="20"] .progress-left .progress-bar {
+  animation: 0;
+}
+
+.progress[data-percentage="30"] .progress-right .progress-bar {
+  animation: loading-3 .5s linear forwards;
+}
+.progress[data-percentage="30"] .progress-left .progress-bar {
+  animation: 0;
+}
+
+.progress[data-percentage="40"] .progress-right .progress-bar {
+  animation: loading-4 .5s linear forwards;
+}
+.progress[data-percentage="40"] .progress-left .progress-bar {
+  animation: 0;
+}
+
+.progress[data-percentage="50"] .progress-right .progress-bar {
+  animation: loading-5 .5s linear forwards;
+}
+.progress[data-percentage="50"] .progress-left .progress-bar {
+  animation: 0;
+}
+
+.progress[data-percentage="60"] .progress-right .progress-bar {
+  animation: loading-5 .5s linear forwards;
+}
+.progress[data-percentage="60"] .progress-left .progress-bar {
+  animation: loading-1 .5s linear forwards 1.5s;
+}
+
+.progress[data-percentage="70"] .progress-right .progress-bar {
+  animation: loading-5 .5s linear forwards;
+}
+.progress[data-percentage="70"] .progress-left .progress-bar {
+  animation: loading-2 .5s linear forwards 1.5s;
+}
+
+.progress[data-percentage="80"] .progress-right .progress-bar {
+  animation: loading-5 .5s linear forwards;
+}
+.progress[data-percentage="80"] .progress-left .progress-bar {
+  animation: loading-3 .5s linear forwards 1.5s;
+}
+
+.progress[data-percentage="90"] .progress-right .progress-bar {
+  animation: loading-5 .5s linear forwards;
+}
+.progress[data-percentage="90"] .progress-left .progress-bar {
+  animation: loading-4 .5s linear forwards 1.5s;
+}
+
+.progress[data-percentage="100"] .progress-right .progress-bar {
+  animation: loading-5 .5s linear forwards;
+}
+.progress[data-percentage="100"] .progress-left .progress-bar {
+  animation: loading-5 .5s linear forwards 1.5s;
+}
+
+@keyframes loading-1 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(36);
+    transform: rotate(36deg);
+  }
+}
+@keyframes loading-2 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(72);
+    transform: rotate(72deg);
+  }
+}
+@keyframes loading-3 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(108);
+    transform: rotate(108deg);
+  }
+}
+@keyframes loading-4 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(144);
+    transform: rotate(144deg);
+  }
+}
+@keyframes loading-5 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(180);
+    transform: rotate(180deg);
+  }
+}
+.progress {
+  margin-bottom: 1em;
+}
+  </style>
 
 {% endblock %}
