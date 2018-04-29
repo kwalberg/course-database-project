@@ -36,6 +36,7 @@ class Review(models.Model):
     has_book = models.IntegerField(null=True)
     liked_teaching = models.IntegerField(null=True)
     ratings = models.IntegerField(null=True)
+    tags = models.TextField()
 
     def get_has_book(self):
         if self.has_book == 0:
