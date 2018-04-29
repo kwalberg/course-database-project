@@ -4,6 +4,7 @@
 
 
 <head>
+    <title>Classy @ Macalester</title>
 <style>
   #advanced-search{
       min-width: 450px;
@@ -12,13 +13,20 @@
 
 
 </style>
+    <script>
+    $('.dropdown-menu').click(function(e) {
+        e.stopPropagation();
+    });
+</script>
+
+
 </head>
 <main role="main">
 
-  <!-- Main jumbotron for a primary marketing message or call to action -->
   <div class="jumbotron">
     <div class="container">
       <h1 class="display-3">Let's be smarter about choosing classes, too.</h1>
+        <br>
         <form class="input-group stylish-input-group" action="/advancedresults/" method="post">
              <div class="form-inline">
                   <div class="form-group">
@@ -29,9 +37,10 @@
              </div>
                 <div class="btn-group"  role="group">
                     <div class="dropdown">
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span>Advanced</button>
+                        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown"
+                                aria-expanded="true"><span class="caret"></span>Advanced</button>
                         <div class="dropdown-menu" role="menu">
-                           <form class="dropdown-menu p-4">
+                           <form class="">
                               <div class="form-group">
                                 <label for="filter">Filter by</label>
                                 <select name="category" class="form-control">
@@ -99,11 +108,7 @@
 
 
 <!--Fixes bug in dropdown menu-->
-<script>
-    $('.dropdown-menu').click(function(e) {
-        e.stopPropagation();
-    });
-</script>
+
 
 
 {% endblock %}
