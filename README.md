@@ -4,6 +4,72 @@
 
 Classy is a Django-hosted web app that scrapes course information, and builds a easy-to-read course catalog with sorting, commenting, rating, and tagging features.
 
+### Installation
+
+Dillinger requires [Node.js](https://nodejs.org/) v4+ to run.
+
+Install the dependencies and devDependencies and start the server.
+
+```sh
+$ cd dillinger
+$ npm install -d
+$ node app
+```
+
+For production environments...
+
+```sh
+$ npm install --production
+$ NODE_ENV=production node app
+```
+
+### Plugins
+
+Dillinger is currently extended with the following plugins. Instructions on how to use them in your own application are linked below.
+
+| Plugin | README |
+| ------ | ------ |
+| Dropbox | [plugins/dropbox/README.md][PlDb] |
+| Github | [plugins/github/README.md][PlGh] |
+| Google Drive | [plugins/googledrive/README.md][PlGd] |
+| OneDrive | [plugins/onedrive/README.md][PlOd] |
+| Medium | [plugins/medium/README.md][PlMe] |
+| Google Analytics | [plugins/googleanalytics/README.md][PlGa] |
+
+
+### Development
+
+Want to contribute? Great!
+
+Dillinger uses Gulp + Webpack for fast developing.
+Make a change in your file and instantanously see your updates!
+
+Open your favorite Terminal and run these commands.
+
+First Tab:
+```sh
+$ node app
+```
+
+Second Tab:
+```sh
+$ gulp watch
+```
+
+(optional) Third:
+```sh
+$ karma test
+```
+#### Building for source
+For production release:
+```sh
+$ gulp build --prod
+```
+Generating pre-built zip archives for distribution:
+```sh
+$ gulp build dist --prod
+```
+
 # Tech Stack
 
   - Import a HTML file and watch it magically convert to Markdown

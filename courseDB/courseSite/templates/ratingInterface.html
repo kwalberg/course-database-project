@@ -35,12 +35,10 @@
                 availableTags: sampleTags, // this param is of course optional. it's for autocomplete.
                 // configure the name of the input field (will be submitted with form), default: item[tags]
                 itemName: 'item',
-                fieldName: 'tags'
+                fieldName: 'tags',
+                allowSpaces: true
             });
         });
-
-
-
 
     </script>
 <style>
@@ -319,11 +317,6 @@
         <textarea class="form-control" name="comment" rows="5" id="comment"
                   placeholder="Muse about the curriculum here..."></textarea>
     </div>
-
-
-
-
-
 
     {% csrf_token %}
     <button type="submit" class="btn btn-default">Submit Review</button>
