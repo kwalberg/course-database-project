@@ -37,7 +37,7 @@ def class_page(request, class_name):
     # Calculate average values for all metrics to be displayed on course pages
     recommended_percent = 0
     # Calculates number of times this individual metric was provided by a reviewer
-    num_recommends = len([review.recommend is not None for review in review_list])
+    num_recommends = len([review for review in review_list if review.recommend is not None])
     for review in review_list:
         if review.recommend is not None:
             recommended_percent += review.recommend
@@ -46,7 +46,7 @@ def class_page(request, class_name):
         recommended_percent = int(round(recommended_percent*100/num_recommends,-1))
 
     enjoyed_teaching = 0
-    num_teaching_rated = len([review.liked_teaching is not None for review in review_list])
+    num_teaching_rated = len([review for review in review_list if review.liked_teaching is not None])
     for review in review_list:
         if review.liked_teaching is not None:
             enjoyed_teaching += review.liked_teaching
@@ -54,7 +54,7 @@ def class_page(request, class_name):
         enjoyed_teaching = int(round(enjoyed_teaching * 100 / num_teaching_rated, -1))
 
     overall_rating = 0
-    num_ratings = len([review.ratings is not None for review in review_list])
+    num_ratings = len([review for review in review_list if review.ratings is not None])
     for review in review_list:
         if review.ratings is not None:
             overall_rating += review.ratings
@@ -63,7 +63,7 @@ def class_page(request, class_name):
 
     difficulty = 0
     average_difficulty = 0
-    num_diff_rated = len([review.test_difficulty is not None for review in review_list])
+    num_diff_rated = len([review for review in review_list if review.test_difficulty is not None])
     for review in review_list:
         if review.test_difficulty is not None:
             difficulty += review.test_difficulty
@@ -72,7 +72,7 @@ def class_page(request, class_name):
 
     workload = 0
     average_workload = 0
-    num_workload_rated = len([review.workload is not None for review in review_list])
+    num_workload_rated = len([review for review in review_list if review.workload is not None])
     for review in review_list:
         if review.workload is not None:
             workload += review.workload
