@@ -37,7 +37,7 @@
     <th>Class</th>
     <th>Instructor</th>
     <th>Class Title</th>
-     <th>Instructor</th>
+     <th>Days</th>
         <th>Times</th>
     </thead>
   </tr>
@@ -47,7 +47,7 @@
         <th><a href="{% url 'class' course.course_id %}">{{course.course_id}}</a></th>
         <th>{{course.instructor}}</th>
         <th>{{course.full_title}}</th>
-        <th>{{course.instructor}}</th>
+        <th>{{course.days}}</th>
         <th>{{course.times}}</th>
 
     </tr>
