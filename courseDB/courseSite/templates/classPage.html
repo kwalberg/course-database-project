@@ -30,34 +30,34 @@
           <!--<p class="lead">{{course.description}}</p>-->
             <blockquote class="blockquote text-left">{{course.description}}</blockquote>
             <button type="button" class="btn btn-raised btn-success">
-  <a href="/rate/{{course}}" style="color:inherit"> Submit a rating </a>
-</button>
+                <a href="/rate/{{course}}" style="color:inherit"> Submit a rating </a>
+            </button>
           <hr>
 
-         <h1 class="display-3">Details</h1>
+                 <h2>Overview</h2>
             <div class="row">
                 <div class="col-sm-6">
-                    <label>Instructor:</label>
+                    <b>Instructor:</b>
                     <span class="nowrap"> &emsp; &emsp; &nbsp; {{course.instructor}}</span>
                 </div>
                 <div class="col-sm-6">
-                    <label>Department:</label>
+                    <b>Department:</b>
                     <span class="nowrap"> &emsp; &emsp; &nbsp; {{course.department}}</span>
                 </div>
             </div>
-            <div class="row">
+            <div class="row second-info">
                 <div class="col-sm-6">
-                    <label>Meeting Times:</label>
+                    <b>Meeting Times:</b>
                     <span> &emsp; {{course.days}} : {{course.times}} </span>
                 </div>
                 <div class="col-sm-6">
-                    <label>Class Title:</label>
+                    <b>Class Title:</b>
                     <span> &emsp; {{course.course_id}} </span>
                 </div>
             </div>
 
             <div class="rating-card">
-                <h1 class="display-3">Summary</h1>
+            <div><h2>Rating Details</h2></div>
 
             <div class="row">
                 <div class="col-sm-3">
@@ -74,19 +74,19 @@
                             {% endfor %}
                             <div style="clear:both;"></div>
                         </div>
-                        <p><i class="fa fa-user" aria-hidden="true"></i> 16 total</p>
+                        <p><i class="fa fa-user" aria-hidden="true"></i> {{review_list|length}} total</p>
                     </div>
 
                 </div>
                     <div class="col-sm-3">
                         <div class="difficulty-rating">
-                            <h3>Difficulty</h3>
+                            <h3><b>Difficulty</b></h3>
                             <h3>{{difficulty}}</h3>
                         </div>
                     </div>
                     <div class="col-sm-3">
                         <div class="HwTime">
-                            <h3>Workload</h3>
+                            <h3> <b>Workload</b></h3>
                             <h3>{{workload}} hrs/week</h3>
                         </div>
                     </div>
@@ -95,13 +95,13 @@
 
                 <div class="col-sm-3">
                         <div class="tags">
-                            <h3> Tags </h3>
+                            <h3> <b>Tags</b> </h3>
 
                         </div>
                     </div>
             </div>
 
-            <div class="row">
+            <div class="row cirlce-ratings">
             <div class="col-md-4 col-sm-6">
 
                 <div class="progress" data-percentage="{{percent_recommend}}">
@@ -159,8 +159,11 @@
                         <div class="row">
                             <div class="col-sm-4">
                                 <div></div>
+                                <b>Overall Rating: </b> {{review.ratings}} <br>
                                 <b>Workload:</b> {{review.workload}}<br>
                                 <b>Difficulty:</b> {{review.test_difficulty}}<br>
+                                <b>Importance of Attendance: </b> {{review.attendance}} <br>
+                                <b>Enjoyed Teaching Style: </b> {{review.liked_teaching}} <br>
                                 <b>Textbook Required:</b> {{review.get_has_book}}<br>
                                 <b>Recommended:</b> {{review.get_recommend}}<br>
                             </div>
@@ -214,6 +217,9 @@
     }
     .nowrap{
         white-space: nowrap;
+    }
+    .second-info{
+        padding-top: 10px;
     }
 
 
@@ -359,6 +365,9 @@
 .progress .progress-value span {
   font-size: 12px;
   text-transform: uppercase;
+}
+.cirlce-ratings{
+    padding-bottom: 10px;
 }
 
 /* This for loop creates the    necessary css animation names

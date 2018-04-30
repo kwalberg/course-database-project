@@ -25,6 +25,7 @@
      <script src="https://cdnjs.cloudflare.com/ajax/libs/tag-it/2.0/js/tag-it.js"></script>
 </head>
 <script>
+<<<<<<< HEAD
 $(function(){
     $('#myTags').tagit();
     $('#submit').click(function(){
@@ -33,6 +34,24 @@ $(function(){
     });
 });
 </script>
+=======
+        $(function(){
+            var sampleTags = ['Macalester', 'Good Professor', 'Easy Notetaking' ];
+
+            //-------------------------------
+            // Preloading data in markup
+            //-------------------------------
+            $('#myULTags').tagit({
+                availableTags: sampleTags, // this param is of course optional. it's for autocomplete.
+                // configure the name of the input field (will be submitted with form), default: item[tags]
+                itemName: 'item',
+                fieldName: 'tags',
+                allowSpaces: true
+            });
+        });
+
+    </script>
+>>>>>>> master
 <style>
 .content {
   text-align: center;
@@ -312,12 +331,17 @@ $(function(){
                   placeholder="Muse about the curriculum here..."></textarea>
     </div>
 
+<<<<<<< HEAD
 
     {% csrf_token %}
 
 
 
     <button type="submit" id="submit" class="btn btn-info">Submit Review</button>
+=======
+    {% csrf_token %}
+    <button type="submit" class="btn btn-default">Submit Review</button>
+>>>>>>> master
     </form>
 </div>
 

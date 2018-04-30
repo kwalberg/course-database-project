@@ -10,15 +10,14 @@
       min-width: 450px;
       color: black;
   }
-
-
 </style>
-    <!--<script>-->
-    <!--$('.dropdown-menu').click(function(e) {-->
-        <!--e.stopPropagation();-->
-    <!--});-->
-<!--</script>-->
 
+<!--Fixes bug in dropdown menu-->
+<script>
+$(document).on('click', '.dropdown-menu', function (e) {
+    e.stopPropagation();
+});
+</script>
 
 </head>
 <main role="main">
@@ -40,9 +39,9 @@
                         <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown"
                                 aria-expanded="true"><span class="caret"></span>Advanced</button>
                         <div class="dropdown-menu" role="menu">
-                           <form class="px-4 py-3">
+                           <form class="dropdown-menu px-4 py-3">
                               <div class="form-group">
-                                <!--<label for="filter">Filter by</label>-->
+                                <label for="filter">Filter by</label>
                                 <select class="custom-select" name="category" class="form-control">
                                     <option name="category" value="0" selected>All</option>
                                     <option name="category" value="1">Instructor</option>
@@ -83,18 +82,11 @@
 
                         <h4 class="card-title">{{class.full_title}}</h4>
                 <!--<p> {{class.description|safe|slice:"0:600"|add:"..."}}</p>-->
-                       <p>{{class.description}}</p>
+                       <p>{{class.description|safe}}</p>
                 <p><a class="btn btn-secondary" href="/class/{{class.course_id}}" role="button">View details &raquo;</a></p>
             </div></div>
             </div>
             {% endfor %}
-    <!--{% for class in most_popular %}-->
-    <!--<div class="col-md-4">-->
-        <!--<h2>{{class.full_title}}</h2>-->
-        <!--<p> {{class.description|slice:"0:500"|add:"..."}}</p>-->
-        <!--<p><a class="btn btn-secondary" href="/class/{{class.course_id}}" role="button">View details &raquo;</a></p>-->
-    <!--</div>-->
-    <!--{% endfor %}-->
     </div>
 
   <hr>
@@ -104,12 +96,8 @@
 </main>
 
 <footer class="container">
-  <p> Software Dev Team 3 (Because we only have 3 people *sob*)</p>
+  <p> Software Dev Team 3</p>
 </footer>
-
-
-<!--Fixes bug in dropdown menu-->
-
 
 
 {% endblock %}

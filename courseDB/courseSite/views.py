@@ -20,7 +20,8 @@ def FrontPage(request):
 
 
 def scale_workload(w):
-    scaled_dict = {'1': '1-3',
+    scaled_dict = {'0': '0',
+                   '1': '1-3',
                    '2': '4-5',
                    '3': '6-7',
                    '4': '8-9',
@@ -61,8 +62,7 @@ def class_page(request, class_name):
         overall_rating = int(round(overall_rating / num_ratings))
 
     difficulty = 0
-    # average_difficulty = 0
-    # average_workload = 0
+    average_difficulty = 0
     num_diff_rated = len([review.test_difficulty is not None for review in review_list])
     for review in review_list:
         if review.test_difficulty is not None:
@@ -71,6 +71,7 @@ def class_page(request, class_name):
         average_difficulty = int(round(difficulty / num_diff_rated))
 
     workload = 0
+    average_workload = 0
     num_workload_rated = len([review.workload is not None for review in review_list])
     for review in review_list:
         if review.workload is not None:
