@@ -2,7 +2,8 @@ from django.db import models
 from django import forms
 from django.contrib.auth.models import User
 from taggit.managers import TaggableManager
-import django_tables2 as tables
+import django_tables2 as table
+import json
 # Create your models here.
 
 

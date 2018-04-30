@@ -149,6 +149,8 @@ def submit_review(request,class_name):
                           test_difficulty=request.POST.get("diff"),
                           recommend=request.POST.get("recommend"),
                           ratings=request.POST.get("rating"))
+                          # tags=request.POST.get("item"))
+
     return redirect(class_page, permanent=True, class_name=class_name)
 
 
