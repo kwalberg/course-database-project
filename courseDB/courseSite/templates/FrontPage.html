@@ -10,6 +10,20 @@
       min-width: 450px;
       color: black;
   }
+    .featured-card{
+        height: 500px;
+    }
+    .featured-card-text{
+        height: 250px;
+        overflow: hidden;
+    }
+    .card-body{
+        height: 420px;
+    }
+    .view-details{
+        height: 100%;
+    }
+
 </style>
 
 <!--Fixes bug in dropdown menu-->
@@ -73,7 +87,7 @@ $(document).on('click', '.dropdown-menu', function (e) {
 
 <div class="container">
   <h2 class="display-3" style="text-align:center;">Featured Courses</h2><br>
-    <div class="row">
+    <div class="row featured-card" style="">
         {% for class in most_popular %}
                  <div class="col">
                     <div class="card bg-light mb-3">
@@ -82,8 +96,12 @@ $(document).on('click', '.dropdown-menu', function (e) {
 
                         <h4 class="card-title">{{class.full_title}}</h4>
                 <!--<p> {{class.description|safe|slice:"0:600"|add:"..."}}</p>-->
-                       <p>{{class.description|safe}}</p>
-                <p><a class="btn btn-secondary" href="/class/{{class.course_id}}" role="button">View details &raquo;</a></p>
+                       <div class="featured-card-text">
+                           <p>{{class.description|safe}}</p>
+                       </div>
+                <div class="view-details">
+                    <p><a class="btn btn-secondary" href="/class/{{class.course_id}}" role="button">View details &raquo;</a></p>
+                </div>
             </div></div>
             </div>
             {% endfor %}
