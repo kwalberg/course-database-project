@@ -3,35 +3,32 @@
 {% block content %}
 <head>
     <meta charset="utf-8">
-    <!-- These few CSS files are just to make this example page look nice. You can ignore them. -->
-        <!--<link href={% static "css/jquery.tagit.css" %} rel="stylesheet" type="text/css">-->
-    <!--<link href={% static "css/tagit.ui-zendesk.css" %} rel="stylesheet" type="text/css">-->
-     <!--   <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/flick/jquery-ui.css"> -->
-    <!--<script src= "{% static 'tagit/js/tag-it.js' %}" type="text/javascript"  charset="utf-8"></script>-->
-    <!--<script src= "{% static 'tagit/css/jquery.tagit.css' %}" type="text/javascript"  charset="utf-8"></script>-->
-    <!--<script src= "{% static 'tagit/css/tagit.ui-zendesk.css' %}" type="text/javascript"  charset="utf-8"></script>-->
-    <!---->
-<!--<script src="{% static 'ratings/dist/themes/fontawesome-stars.css' %}"></script>-->
-    <!--<link rel="stylesheet" href="{% static 'ratings/dist/themes/fontawesome-stars.css' %}">-->
-    <!--<link rel="stylesheet" href="{% static 'ratings/examples/css/normalize.min.css' %}">-->
-    <!--<link rel="stylesheet" href="{% static 'ratings/examples/css/css/main.css' %}">-->
-    <!--<link rel="stylesheet" href="{% static 'ratings/examples/css/examples.css' %}">-->
-    <!--<link rel="stylesheet" href="{% static 'ratings/dist/themes/bars-movie.css' %}">-->
-<title>Ratings</title>
-<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+    <title>Ratings</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tag-it/2.0/css/jquery.tagit.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tag-it/2.0/css/jquery.tagit.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tag-it/2.0/css/tagit.ui-zendesk.css">
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/tag-it/2.0/js/tag-it.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tag-it/2.0/js/tag-it.js"></script>
 </head>
 <script>
-
 $(function(){
-    $('#myTags').tagit();
-    $('#submit').click(function(){
-        var tags = $("#myTags").tagit("assignedTags");
-        alert("tags = "+tags);
+
+    $('#myTags').tagit({
+        allowSpaces: true
     });
+
+    $('#submit').click(function(){
+        $("#review-form").submit( function(eventObj) {
+            $('<input />').attr('type', 'hidden')
+                .attr('name', "tags")
+                .attr('value', $("#myTags").tagit("assignedTags"))
+                .appendTo('#review-form');
+            return true;
+        });
+        //var tags = $("#myTags").tagit("assignedTags");
+        //alert("tags = "+tags);
+    });
+
 });
 </script>
 
@@ -152,7 +149,7 @@ $(function(){
         <h2>Submit a Rating for {{course.course_id}}</h2><br><br>
     </div>
 
-    <form action="/submit_review/{{course.course_id}}/" method="post">
+    <form action="/submit_review/{{course.course_id}}/" id="review-form" method="post">
     <div class="row">
         <div class="col-sm-3"><p>General Workload (Hours):&nbsp;</p></div>
         <div class="col">
@@ -315,7 +312,8 @@ $(function(){
             <div class="form-group">
             <div class="col-sm-3"><p>Add Tags</p></div>
             <ul id="myTags">
-                <!-- Existing list items will be pre-added to the tags. -->                <li>Entertaining Professor</li>
+                <!-- Existing list items will be pre-added to the tags. -->
+                <li>Entertaining Professor</li>
                 <li>Test Heavy</li>
                 <li>GPA Killer</li>
                 <li>Great Requirement Filler</li>
