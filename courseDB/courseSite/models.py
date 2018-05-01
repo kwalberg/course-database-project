@@ -123,6 +123,15 @@ class Review(models.Model):
         else:
             return None
 
+    # Convert bool to readable format
+    def get_enjoyed_teaching(self):
+        if self.liked_teaching == 0:
+            return "No"
+        elif self.liked_teaching == 1:
+            return "Yes"
+        else:
+            return None
+
     # Convert date to correct format
     def simple_date(self):
         return self.pub_date.strftime("%m/%d/%Y")

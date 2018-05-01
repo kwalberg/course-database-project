@@ -24,9 +24,6 @@
         <div class="col-sm-8 text-center">
             <h1 class="display-2">{{course.full_title}}</h1>
 
-
-
-
           <!--<p class="lead">{{course.description}}</p>-->
             <blockquote class="blockquote text-left">{{course.description}}</blockquote>
             <button type="button" class="btn btn-raised btn-success">
@@ -81,7 +78,7 @@
                     <div class="col-sm-3">
                         <div class="difficulty-rating">
                             <h3><b>Difficulty</b></h3>
-                            <h3>{{course.get_average_difficulty}}</h3>
+                            <h3>{{course.get_average_difficulty}}/5</h3>
                         </div>
                     </div>
                     <div class="col-sm-3">
@@ -97,7 +94,7 @@
                         <div class="tags">
                             <h3> <b>Tags</b> </h3>
                             {% for tag in course.get_all_tags %}
-                                <div>{{tag}}</div>
+                                <div class="badge badge-light">{{tag}}</div><br>
                             {% endfor %}
                         </div>
                     </div>
@@ -165,7 +162,7 @@
                                 <b>Workload:</b> {{review.workload}}<br>
                                 <b>Difficulty:</b> {{review.test_difficulty}}<br>
                                 <b>Importance of Attendance: </b> {{review.attendance}} <br>
-                                <b>Enjoyed Teaching Style: </b> {{review.liked_teaching}} <br>
+                                <b>Enjoyed Teaching Style: </b> {{review.get_enjoyed_teaching}} <br>
                                 <b>Textbook Required:</b> {{review.get_has_book}}<br>
                                 <b>Recommended:</b> {{review.get_recommend}}<br>
                             </div>
@@ -175,7 +172,7 @@
 
                             <div class="col-sm-3">
                                 {% for tag in review.get_tags %}
-                                    {{tag}}<br>
+                                <div class="badge badge-light">{{tag}}</div><br>
                                 {% endfor %}
                             </div>
                     </div>
