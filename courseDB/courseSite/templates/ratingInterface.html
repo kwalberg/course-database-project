@@ -18,10 +18,6 @@ $(function(){
     });
 
     $('#submit').click(function(){
-<<<<<<< HEAD
-        var tags = $("#myTags").tagit("assignedTags");
-        #$("#target").submit();
-=======
         $("#review-form").submit( function(eventObj) {
             $('<input />').attr('type', 'hidden')
                 .attr('name', "tags")
@@ -29,9 +25,6 @@ $(function(){
                 .appendTo('#review-form');
             return true;
         });
-        //var tags = $("#myTags").tagit("assignedTags");
-        //alert("tags = "+tags);
->>>>>>> master
     });
 
 });

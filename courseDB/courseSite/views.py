@@ -99,8 +99,8 @@ def submit_review(request,class_name):
                           workload=request.POST.get("time"),
                           test_difficulty=request.POST.get("diff"),
                           recommend=request.POST.get("recommend"),
-                          ratings=request.POST.get("rating"))
-                          # tags=request.POST.get("item"))
+                          ratings=request.POST.get("rating"),
+                          tags=request.POST.get("tags"))
 
     return redirect(class_page, permanent=True, class_name=class_name)
 
