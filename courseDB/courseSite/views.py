@@ -18,7 +18,6 @@ def FrontPage(request):
     most_popular = Course.objects.all()[slice: slice+3]
     return render(request, 'FrontPage.html', {'most_popular': most_popular})
 
-
 def scale_workload(w):
     scaled_dict = {'0': '0',
                    '1': '1-3',
@@ -151,7 +150,6 @@ def submit_review(request,class_name):
                           recommend=request.POST.get("recommend"),
                           ratings=request.POST.get("rating"))
                           # tags=request.POST.get("item"))
-
     return redirect(class_page, permanent=True, class_name=class_name)
 
 
