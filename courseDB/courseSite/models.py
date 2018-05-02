@@ -87,7 +87,13 @@ class Course(models.Model):
                 workload += review.workload
         if num_workload_rated != 0:
             average_workload = int(round(workload / num_workload_rated))
-        return average_workload
+        scaled_dict = {'0': '0',
+                       '1': '1-3',
+                       '2': '4-5',
+                       '3': '6-7',
+                       '4': '8-9',
+                       '5': '10+'}
+        return scaled_dict[str(average_workload)]
 
 
 class Review(models.Model):
@@ -112,7 +118,7 @@ class Review(models.Model):
         elif self.has_book == 1:
             return "Yes"
         else:
-            return None
+            return "Not Rated"
 
     # Convert bool to readable format
     def get_recommend(self):
@@ -121,7 +127,7 @@ class Review(models.Model):
         elif self.has_book == 1:
             return "Yes"
         else:
-            return None
+            return "Not Rated"
 
     # Convert bool to readable format
     def get_enjoyed_teaching(self):
@@ -130,7 +136,32 @@ class Review(models.Model):
         elif self.liked_teaching == 1:
             return "Yes"
         else:
-            return None
+            return "Not Rated"
+
+    # Convert "None" to "Not Rated" for all remaining fields (makes more sense from UI perspective)
+    def get_workload(self):
+        if self.workload:
+            return self.workload
+        else:
+            return "Not Rated"
+
+    def get_attend_class(self):
+        if self.attend_class:
+            return self.attend_class
+        else:
+            return "Not Rated"
+
+    def get_difficulty(self):
+        if self.test_difficulty:
+            return self.test_difficulty
+        else:
+            return "Not Rated"
+
+    def get_overall_rating(self):
+        if self.ratings:
+            return self.ratings
+        else:
+            return "Not Rated"
 
     # Convert date to correct format
     def simple_date(self):

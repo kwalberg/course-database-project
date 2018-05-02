@@ -19,16 +19,6 @@ def FrontPage(request):
     return render(request, 'FrontPage.html', {'most_popular': most_popular})
 
 
-def scale_workload(w):
-    scaled_dict = {'0': '0',
-                   '1': '1-3',
-                   '2': '4-5',
-                   '3': '6-7',
-                   '4': '8-9',
-                   '5': '10+'}
-    return scaled_dict[str(w)]
-
-
 def class_page(request, class_name):
     c = Course.objects.filter(course_id=class_name)[0]
     review_list = Review.objects.filter(course=c)[::-1]
