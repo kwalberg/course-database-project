@@ -6,13 +6,13 @@ Classy is a Django-hosted web app that scrapes course information, and builds a 
 The main purpose of this software project is to learn about software development and work as a team to produce a product for our computer science course, COMP 225 Software Design and Development, taught by Professor Elizabeth Jensen.
 
 # Tech Stack
--Django 2.0
--Python 3
--Bootstrap 4
--JQuery
--Javascript
--MySQL
--Amazon Web Services for Deploy
+- Django 2.0
+- Python 3
+- Bootstrap 4
+- JQuery
+- Javascript
+- MySQL
+- Amazon Web Services for Deploy
 
 > The overriding design goal for Markdown's
 > formatting syntax is to make it as readable
