@@ -120,6 +120,13 @@ class Review(models.Model):
         else:
             return "Not Rated"
 
+    def get_text(self):
+        if self.text is "":
+
+            return "No Comments"
+        else:
+            return self.text
+
     # Convert bool to readable format
     def get_recommend(self):
         if self.recommend == 0:
