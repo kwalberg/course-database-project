@@ -12,10 +12,15 @@
 </head>
 <script>
 $(function(){
+ var sampleTags = ['hard class', 'fun professor', 'curve', 'test-heavy', 'quantitative', 'group discussions',
+ 'requirement-filler', 'easy'];
 
-    $('#myTags').tagit({
-        allowSpaces: true
-    });
+$('#myTags').tagit({
+                availableTags: sampleTags, // this param is of course optional. it's for autocomplete.
+                // configure the name of the input field (will be submitted with form), default: item[tags]
+                itemName: 'item',
+                fieldName: 'tags'
+            });
 
     $('#submit').click(function(){
         $("#review-form").submit( function(eventObj) {
@@ -27,8 +32,36 @@ $(function(){
         });
     });
 
+
 });
 </script>
+<!--var sampleTags = ['hard class', 'fun professor', 'curve', 'test-heavy', 'quantitative', 'requirement-filler', 'easy-->
+   <!--class', 'writing heavy', 'project heavy', 'attendance required', 'full of lectures', 'take notes', 'weed-out',-->
+   <!--'laptop required', 'group homework', 'funny teacher', 'harsh grader', 'has preceptors', 'life-changing', 'hot-->
+   <!--teacher', 'test heavy'];-->
+
+
+
+
+ <!--$('#myTags').tagit({-->
+                <!--availableTags: sampleTags,-->
+                <!--// This will make Tag-it submit a single form value, as a comma-delimited field.-->
+                <!--singleField: true,-->
+                <!--itemName: 'item',-->
+                <!--fieldName: 'tags'-->
+            <!--});-->
+
+    <!--$('#submit').click(function(){-->
+        <!--$("#review-form").submit( function(eventObj) {-->
+            <!--$('<input />').attr('type', 'hidden')-->
+                <!--.attr('name', "tags")-->
+                <!--.attr('value', $("#myTags").tagit("assignedTags"))-->
+                <!--.appendTo('#review-form');-->
+            <!--return true;-->
+        <!--});-->
+    <!--});-->
+
+<!--});-->
 
 <style>
 .content {
@@ -294,9 +327,6 @@ $(function(){
             <ul id="myTags">
                 <!-- Existing list items will be pre-added to the tags. -->
                 <li>Entertaining Professor</li>
-                <li>Test Heavy</li>
-                <li>GPA Killer</li>
-                <li>Great Requirement Filler</li>
             </ul>
         </div>
         </div>
