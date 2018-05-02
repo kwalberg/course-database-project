@@ -93,7 +93,7 @@
       <div class="container">
 
         <a class="navbar-brand" href="/">
-          <img src="{% static 'classy.png' %}" height=25px width=80px>
+          <img src="{% static 'classy.png' %}" height=20px width=60px>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -108,12 +108,17 @@
                         <input type="search" class="form-control" name = "query" placeholder="Find a class">
                         {% csrf_token %}
                       </div>
+                     <button type="submit" class="btn btn-primary" ><span class="glyphicon glyphicon-search"
+                                                                                   aria-hidden="true"></span>Search</button>
                   </form>
 
               </div>
 
 
 
+            </li>
+               <li class="nav-item">
+              <a class="nav-link" href="/">Home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/Catalog/">Catalog</a>
