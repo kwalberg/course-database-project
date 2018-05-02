@@ -18,6 +18,7 @@ def FrontPage(request):
     most_popular = Course.objects.all()[slice: slice+3]
     return render(request, 'FrontPage.html', {'most_popular': most_popular})
 
+
 def scale_workload(w):
     scaled_dict = {'0': '0',
                    '1': '1-3',
@@ -33,59 +34,9 @@ def class_page(request, class_name):
     review_list = Review.objects.filter(course=c)[::-1]
     course = Course.objects.filter(course_id=class_name)[0]
 
-    # Calculate average values for all metrics to be displayed on course pages
-    recommended_percent = 0
-    # Calculates number of times this individual metric was provided by a reviewer
-    num_recommends = len([review for review in review_list if review.recommend is not None])
-    for review in review_list:
-        if review.recommend is not None:
-            recommended_percent += review.recommend
-    # Handle potential division by zero
-    if num_recommends != 0:
-        recommended_percent = int(round(recommended_percent*100/num_recommends,-1))
-
-    enjoyed_teaching = 0
-    num_teaching_rated = len([review for review in review_list if review.liked_teaching is not None])
-    for review in review_list:
-        if review.liked_teaching is not None:
-            enjoyed_teaching += review.liked_teaching
-    if num_teaching_rated != 0:
-        enjoyed_teaching = int(round(enjoyed_teaching * 100 / num_teaching_rated, -1))
-
-    overall_rating = 0
-    num_ratings = len([review for review in review_list if review.ratings is not None])
-    for review in review_list:
-        if review.ratings is not None:
-            overall_rating += review.ratings
-    if num_ratings != 0:
-        overall_rating = int(round(overall_rating / num_ratings))
-
-    difficulty = 0
-    average_difficulty = 0
-    num_diff_rated = len([review for review in review_list if review.test_difficulty is not None])
-    for review in review_list:
-        if review.test_difficulty is not None:
-            difficulty += review.test_difficulty
-    if num_diff_rated != 0:
-        average_difficulty = int(round(difficulty / num_diff_rated))
-
-    workload = 0
-    average_workload = 0
-    num_workload_rated = len([review for review in review_list if review.workload is not None])
-    for review in review_list:
-        if review.workload is not None:
-            workload += review.workload
-    if num_workload_rated != 0:
-        average_workload = int(round(workload / num_workload_rated))
-
     return render(request, 'classPage.html', {'course': course,
                                               'review_list': review_list,
-                                              'percent_recommend': recommended_percent,
-                                              'rating': overall_rating,
-                                              'percent_enjoyed_teaching': enjoyed_teaching,
-                                              'difficulty': average_difficulty,
-                                              'workload': scale_workload(average_workload),
-                                              'range_l': range(0,overall_rating), 'range_u': range(overall_rating, 5)})
+                                              'range_l': range(0,course.get_average_rating()), 'range_u': range(course.get_average_rating(), 5)})
 
 
 def search_results(request):
@@ -150,6 +101,7 @@ def submit_review(request,class_name):
                           recommend=request.POST.get("recommend"),
                           ratings=request.POST.get("rating"))
                           # tags=request.POST.get("item"))
+
     return redirect(class_page, permanent=True, class_name=class_name)
 
 

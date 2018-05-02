@@ -24,9 +24,6 @@
         <div class="col-sm-8 text-center">
             <h1 class="display-2">{{course.full_title}}</h1>
 
-
-
-
           <!--<p class="lead">{{course.description}}</p>-->
             <blockquote class="blockquote text-left">{{course.description}}</blockquote>
             <button type="button" class="btn btn-raised btn-success">
@@ -62,7 +59,7 @@
             <div class="row">
                 <div class="col-sm-3">
                     <div class="class-overall-rating">
-                        <h2>{{rating}}</h2>
+                        <h2>{{course.get_average_rating}}</h2>
                         <div class ="stars">
                             <!-- Makes selected stars for each point in the rating, then adds unselected stars to fill up to 5 -->
                             {% for i in range_l %}
@@ -74,20 +71,20 @@
                             {% endfor %}
                             <div style="clear:both;"></div>
                         </div>
-                        <p><i class="fa fa-user" aria-hidden="true"></i> {{review_list|length}} total</p>
+                        <p><i class="fa fa-user" aria-hidden="true"></i> {{review_list|length}} total ratings</p>
                     </div>
 
                 </div>
                     <div class="col-sm-3">
                         <div class="difficulty-rating">
                             <h3><b>Difficulty</b></h3>
-                            <h3>{{difficulty}}</h3>
+                            <h3>{{course.get_average_difficulty}}/5</h3>
                         </div>
                     </div>
                     <div class="col-sm-3">
                         <div class="HwTime">
                             <h3> <b>Workload</b></h3>
-                            <h3>{{workload}} hrs/week</h3>
+                            <h3>{{course.get_average_workload}} hrs/week</h3>
                         </div>
                     </div>
 
@@ -96,7 +93,9 @@
                 <div class="col-sm-3">
                         <div class="tags">
                             <h3> <b>Tags</b> </h3>
-
+                            {% for tag in course.get_all_tags %}
+                                <div class="badge badge-light">{{tag}}</div><br>
+                            {% endfor %}
                         </div>
                     </div>
             </div>
@@ -104,7 +103,7 @@
             <div class="row cirlce-ratings">
             <div class="col-md-4 col-sm-6">
 
-                <div class="progress" data-percentage="{{percent_recommend}}">
+                <div class="progress" data-percentage="{{course.get_percent_recommend}}">
                 <span class="progress-left">
                     <span class="progress-bar"></span>
                 </span>
@@ -112,13 +111,13 @@
                     <span class="progress-bar"></span>
                 </span>
                 <div class="progress-value">
-                    {{percent_recommend}}%
+                    {{course.get_percent_recommend}}%
                 </div>
                 </div>
                 <p> Recommend to a Friend</p>
             </div>
             <div class="col-md-4 col-sm-6">
-                <div class="progress" data-percentage="{{percent_enjoyed_teaching}}">
+                <div class="progress" data-percentage="{{course.get_percent_enjoyed_teaching}}">
                 <span class="progress-left">
                     <span class="progress-bar"></span>
                 </span>
@@ -126,7 +125,7 @@
                     <span class="progress-bar"></span>
                 </span>
                 <div class="progress-value">
-                    {{percent_enjoyed_teaching}}%
+                    {{course.get_percent_enjoyed_teaching}}%
                 </div>
                 </div>
                 <p style="text-align:center;"> Enjoyed Teaching Style</p>
@@ -159,11 +158,11 @@
                         <div class="row">
                             <div class="col-sm-4">
                                 <div></div>
-                                <b>Overall Rating: </b> {{review.ratings}} <br>
-                                <b>Workload:</b> {{review.workload}}<br>
-                                <b>Difficulty:</b> {{review.test_difficulty}}<br>
-                                <b>Importance of Attendance: </b> {{review.attendance}} <br>
-                                <b>Enjoyed Teaching Style: </b> {{review.liked_teaching}} <br>
+                                <b>Overall Rating: </b> {{review.get_overall_rating}} <br>
+                                <b>Workload:</b> {{review.get_workload}}<br>
+                                <b>Difficulty:</b> {{review.get_difficulty}}<br>
+                                <b>Importance of Attendance: </b> {{review.get_attend_class}} <br>
+                                <b>Enjoyed Teaching Style: </b> {{review.get_enjoyed_teaching}} <br>
                                 <b>Textbook Required:</b> {{review.get_has_book}}<br>
                                 <b>Recommended:</b> {{review.get_recommend}}<br>
                             </div>
@@ -172,7 +171,9 @@
                             </div>
 
                             <div class="col-sm-3">
-
+                                {% for tag in review.get_tags %}
+                                <div class="badge badge-light">{{tag}}</div><br>
+                                {% endfor %}
                             </div>
                     </div>
                       </div>
